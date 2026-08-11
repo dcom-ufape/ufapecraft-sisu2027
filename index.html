@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UFAPEcraft — Descubra o seu mundo | SiSU 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#1f7a3d;
+    --verde-esc:#12502a;
+    --verde-claro:#5fbb46;
+    --vinho:#8a2432;
+    --vinho-esc:#5f1720;
+    --areia:#e8dcc0;
+    --areia-esc:#cdbf9c;
+    --terra:#7a5233;
+    --dark:#20241f;
+    --dark2:#161915;
+    --gold:#e0a81e;
+    --agua:#3aa7c9;
+    --branco:#f5f2e8;
+    --roxo:#5a4a8a;
+    --azul:#2b4c8c;
+    --vila:#2e8b7d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'VT323',monospace;
+    background:var(--dark2);
+    color:var(--branco);
+    font-size:20px;
+    line-height:1.35;
+    image-rendering:pixelated;
+    overflow-x:hidden;
+  }
+  .pixel{font-family:'Press Start 2P',monospace;line-height:1.5;}
+  /* blocky borders */
+  .block{
+    border:4px solid var(--dark);
+    box-shadow:inset -4px -4px 0 rgba(0,0,0,.25), inset 4px 4px 0 rgba(255,255,255,.12), 0 6px 0 rgba(0,0,0,.35);
+  }
+  button{cursor:pointer;font-family:inherit}
+
+  /* ===== HERO ===== */
+  header.hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:40px 20px 90px;
+    background:
+      linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.35) 45%, rgba(18,20,15,.75) 100%),
+      url('assets/capa-campus.jpg') center 30%/cover no-repeat;
+    overflow:hidden;
+  }
+  /* floating pixel clouds */
+  .cloud{position:absolute;background:#fff;opacity:.9;box-shadow:20px 0 #fff,40px 0 #fff,20px -18px #fff, -20px 0 #fff;width:18px;height:18px;border-radius:2px;animation:drift 40s linear infinite}
+  .cloud.c1{top:10%;left:-10%;transform:scale(2)}
+  .cloud.c2{top:22%;left:-30%;transform:scale(1.3);animation-duration:55s}
+  .cloud.c3{top:6%;left:-50%;transform:scale(1.6);animation-duration:48s}
+  @keyframes drift{from{left:-15%}to{left:115%}}
+
+  .logo-badge{
+    display:inline-block;background:var(--vinho);color:#fff;
+    padding:6px 14px;font-size:11px;margin-bottom:22px;letter-spacing:1px;
+  }
+  h1.title{
+    font-size:clamp(26px,7vw,58px);color:#fff;
+    text-shadow:4px 4px 0 var(--verde-esc), 8px 8px 0 rgba(0,0,0,.35);
+    margin-bottom:10px;
+  }
+  h1.title .green{color:var(--gold)}
+  .subtitle{font-size:clamp(20px,3.5vw,30px);color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.4);max-width:640px;margin:0 auto 8px}
+  .kicker{font-size:clamp(16px,2.5vw,22px);color:#eafbe0;text-shadow:2px 2px 0 rgba(0,0,0,.4);margin-bottom:30px}
+  .btn-primary{
+    background:var(--gold);color:var(--dark);font-family:'Press Start 2P',monospace;
+    font-size:14px;padding:18px 26px;border:4px solid var(--dark);
+    box-shadow:inset -3px -3px 0 rgba(0,0,0,.3), 0 6px 0 #a87c10;
+    transition:transform .06s, box-shadow .06s;
+  }
+  .btn-primary:hover{filter:brightness(1.08)}
+  .btn-primary:active{transform:translateY(5px);box-shadow:inset -3px -3px 0 rgba(0,0,0,.3),0 1px 0 #a87c10}
+  .hero-hint{margin-top:18px;font-size:18px;color:#eafbe0;text-shadow:1px 1px 0 rgba(0,0,0,.4)}
+
+  /* ground row of blocks at hero bottom */
+  .ground{position:absolute;bottom:0;left:0;width:100%;height:32px;display:flex}
+  .ground span{flex:1;height:100%;background:var(--terra);border-top:6px solid var(--verde);border-right:1px solid rgba(0,0,0,.15)}
+
+  /* ===== SECTIONS ===== */
+  section{padding:60px 20px;max-width:1080px;margin:0 auto}
+  h2.sec{font-family:'Press Start 2P',monospace;font-size:clamp(16px,3.5vw,26px);text-align:center;margin-bottom:14px;color:var(--gold);text-shadow:3px 3px 0 rgba(0,0,0,.4)}
+  .sec-sub{text-align:center;font-size:22px;color:#cfc8b4;max-width:680px;margin:0 auto 40px}
+
+  /* worlds grid */
+  .worlds{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+  .world-card{padding:22px;color:#fff;position:relative;transition:transform .1s}
+  .world-card:hover{transform:translateY(-4px)}
+  .world-card .wico{font-size:44px;margin-bottom:8px;display:block}
+  .world-card h3{font-family:'Press Start 2P',monospace;font-size:13px;margin-bottom:10px;line-height:1.6}
+  .world-card p{font-size:19px;margin-bottom:14px;opacity:.95}
+  .world-card ul{list-style:none}
+  .world-card li{font-size:19px;padding:4px 0;border-top:2px dotted rgba(255,255,255,.35)}
+  .world-card li:before{content:"\25AA";margin-right:8px;color:var(--gold)}
+  .w-campo{background:var(--verde)}
+  .w-forja{background:var(--vinho)}
+  .w-vila{background:var(--vila)}
+  .w-saber{background:var(--roxo)}
+  .w-torre{background:var(--azul)}
+
+  /* ===== QUIZ ===== */
+  #quiz-wrap{background:var(--dark);padding:0}
+  .quiz-inner{max-width:760px;margin:0 auto;padding:50px 20px}
+  .progress{height:22px;background:var(--dark2);border:4px solid #000;margin-bottom:26px;padding:3px}
+  .progress .bar{height:100%;background:var(--verde-claro);width:0%;transition:width .3s;box-shadow:inset 0 -4px 0 rgba(0,0,0,.25)}
+  .qcount{font-size:18px;color:var(--gold);text-align:center;margin-bottom:8px}
+  .qtext{font-family:'Press Start 2P',monospace;font-size:clamp(14px,2.8vw,19px);line-height:1.7;text-align:center;margin-bottom:30px;color:#fff}
+  .answers{display:grid;gap:14px}
+  .ans{
+    background:var(--areia);color:var(--dark);border:4px solid var(--dark);
+    padding:16px 18px;font-size:21px;text-align:left;display:flex;align-items:center;gap:12px;
+    box-shadow:inset -3px -3px 0 rgba(0,0,0,.18), 0 4px 0 rgba(0,0,0,.3);transition:transform .05s,background .1s;
+  }
+  .ans:hover{background:#fff;transform:translateX(4px)}
+  .ans:active{transform:translateY(3px)}
+  .ans .em{font-size:28px}
+  .btn-back{
+    display:block;margin:26px auto 0;background:transparent;color:var(--areia-esc);
+    border:2px solid var(--areia-esc);font-family:'VT323',monospace;font-size:18px;
+    padding:8px 20px;opacity:.85;
+  }
+  .btn-back:hover{opacity:1;color:#fff;border-color:#fff}
+
+  /* ===== RESULT ===== */
+  #result{display:none;text-align:center}
+  .result-card{padding:36px 24px;color:#fff;max-width:620px;margin:0 auto}
+  .avatar{max-width:220px;margin:0 auto 20px;position:relative}
+  .avatar img{display:block;width:100%;height:auto;margin:0 auto;border:4px solid var(--dark);box-shadow:inset -4px -4px 0 rgba(0,0,0,.25), 0 6px 0 rgba(0,0,0,.35)}
+  .result-card .rlabel{font-size:20px;letter-spacing:2px;opacity:.9}
+  .result-card h3{font-family:'Press Start 2P',monospace;font-size:22px;margin:8px 0 16px;text-shadow:3px 3px 0 rgba(0,0,0,.4)}
+  .result-card .rdesc{font-size:22px;margin-bottom:22px}
+  .course-pick{background:rgba(0,0,0,.28);border:4px solid rgba(0,0,0,.4);padding:18px;margin-bottom:16px}
+  .course-pick .clabel{font-size:18px;opacity:.85}
+  .course-pick .cname{font-family:'Press Start 2P',monospace;font-size:15px;margin:8px 0;color:var(--gold);line-height:1.6}
+  .course-pick .cdesc{font-size:20px}
+  .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+  .btn-sec{background:var(--gold);color:var(--dark);font-family:'Press Start 2P',monospace;font-size:11px;padding:14px 18px;border:4px solid var(--dark);box-shadow:0 4px 0 #a87c10}
+  a.btn-sec{display:inline-block;text-decoration:none;color:var(--dark);line-height:1.6}
+  .btn-ghost{background:transparent;color:#fff;font-family:'Press Start 2P',monospace;font-size:11px;padding:14px 18px;border:4px solid #fff}
+  .other-worlds{font-size:19px;color:#cfc8b4;margin-top:26px}
+
+  /* pixel avatar built from blocks */
+  .px{position:absolute;width:20px;height:20px}
+
+  footer{background:var(--dark2);text-align:center;padding:34px 20px;font-size:18px;color:#9a927e;border-top:6px solid var(--verde)}
+  footer .pixel{font-size:10px;color:var(--areia)}
+  .disclaimer{max-width:700px;margin:14px auto 0;font-size:16px;opacity:.8}
+  a{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="logo-badge pixel">UFAPE • SiSU 2027</div>
+  <h1 class="title pixel">UFAPE<span class="green">craft</span></h1>
+  <p class="subtitle">Cada curso é um mundo. Qual é o seu?</p>
+  <p class="kicker">Responda, descubra o seu mundo e o curso que combina com você.</p>
+  <button class="btn-primary" onclick="startQuiz()">▶ COMEÇAR A JOGAR</button>
+  <p class="hero-hint">⛏ 5 mundos · 13 cursos · leva 1 minuto</p>
+  <div class="ground"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</header>
+
+<!-- WORLDS -->
+<section id="mundos">
+  <h2 class="sec">Os 5 mundos da UFAPE</h2>
+  <p class="sec-sub">Agrupamos os 13 cursos de graduação em cinco mundos — um para cada área oficial da UFAPE. Cada um tem um jeito de jogar — e um jeito de transformar o Agreste.</p>
+  <div class="worlds">
+    <div class="world-card w-campo block">
+      <span class="wico">🌾</span>
+      <h3>Bioma do Campo</h3>
+      <p>Pra quem gosta de cultivar, criar e cuidar da vida.</p>
+      <ul><li>Agronomia</li><li>Engenharia de Alimentos</li><li>Medicina Veterinária</li><li>Zootecnia</li></ul>
+    </div>
+    <div class="world-card w-forja block">
+      <span class="wico">⚙️</span>
+      <h3>Mundo da Forja</h3>
+      <p>Pra quem gosta de criar, programar e decifrar dados.</p>
+      <ul><li>Ciência da Computação</li><li>Ciência de Dados</li></ul>
+    </div>
+    <div class="world-card w-saber block">
+      <span class="wico">📖</span>
+      <h3>Reino do Saber</h3>
+      <p>Pra quem gosta de entender e formar gente.</p>
+      <ul><li>Pedagogia</li><li>Psicologia</li></ul>
+    </div>
+    <div class="world-card w-torre block">
+      <span class="wico">📜</span>
+      <h3>Torre do Encantamento</h3>
+      <p>Pra quem gosta de línguas, livros e palavras.</p>
+      <ul><li>Letras – Inglês</li><li>Letras – Português</li></ul>
+    </div>
+    <div class="world-card w-vila block">
+      <span class="wico">💠</span>
+      <h3>Distrito do Comércio</h3>
+      <p>Pra quem gosta de negociar, organizar e conhecer as regras do jogo.</p>
+      <ul><li>Administração</li><li>Ciências Contábeis</li><li>Direito</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<div id="quiz-wrap">
+  <div class="quiz-inner">
+    <div id="quiz">
+      <div class="progress block"><div class="bar" id="bar"></div></div>
+      <p class="qcount" id="qcount"></p>
+      <p class="qtext" id="qtext"></p>
+      <div class="answers" id="answers"></div>
+      <button class="btn-back" id="backBtn" onclick="goBack()" style="display:none">← VOLTAR</button>
+    </div>
+
+    <div id="result">
+      <div class="result-card block" id="resultCard">
+        <div class="avatar" id="avatar"></div>
+        <div class="rlabel">SEU MUNDO É</div>
+        <h3 id="rworld"></h3>
+        <p class="rdesc" id="rdesc"></p>
+        <div class="course-pick">
+          <div class="clabel">⛏ O curso que mais combina com você:</div>
+          <div class="cname" id="rcourse"></div>
+          <div class="cdesc" id="rcoursedesc"></div>
+        </div>
+        <div class="result-actions">
+          <a class="btn-sec" id="rlink" href="#" target="_blank" rel="noopener">🔗 SAIBA MAIS SOBRE O CURSO →</a>
+          <button class="btn-sec" onclick="shareResult()">📢 COMPARTILHAR</button>
+          <button class="btn-ghost" onclick="restart()">↻ JOGAR DE NOVO</button>
+        </div>
+        <p class="other-worlds" id="others"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="pixel">UFAPEcraft</p>
+  <p>Universidade Federal do Agreste de Pernambuco · Garanhuns/PE</p>
+  <p class="disclaimer">Protótipo de campanha para o SiSU 2027. Este teste é uma brincadeira de orientação vocacional — a escolha final do curso é sua. Conheça todos os cursos em <a href="https://ufape.edu.br/graduacao" target="_blank">ufape.edu.br/graduacao</a>.</p>
+</footer>
+
+<script>
+/* ---------- DADOS ---------- */
+const WORLDS = {
+  campo:{nome:"BIOMA DO CAMPO",cor:"#1f7a3d",emoji:"🌾",
+    desc:"Você é do tipo que planta, cria e cuida da vida. Seu jogo é fazer o Agreste florescer.",
+    cursos:{
+      agronomia:{nome:"Agronomia",desc:"Ciência do solo, das plantas e da produção sustentável de alimentos.",link:"https://ufape.edu.br/CCBAG.CAMUS",img:"assets/personagens/agronomia.jpg"},
+      alimentos:{nome:"Engenharia de Alimentos",desc:"Transforma matéria-prima em produto: processos, qualidade e inovação.",link:"https://ufape.edu.br/CCBEL.CAMUS",img:"assets/personagens/alimentos.jpg"},
+      vet:{nome:"Medicina Veterinária",desc:"Saúde e bem-estar animal, do pet ao rebanho, e saúde pública.",link:"https://ufape.edu.br/CCBMV.CAMUS",img:"assets/personagens/vet.jpg"},
+      zootecnia:{nome:"Zootecnia",desc:"Produção animal, nutrição e melhoramento — do campo à mesa.",link:"https://ufape.edu.br/CCBZO.CAMUS",img:"assets/personagens/zootecnia.jpg"}
+    }},
+  forja:{nome:"MUNDO DA FORJA",cor:"#8a2432",emoji:"⚙️",
+    desc:"Você é do tipo que constrói engenhocas, programa e decifra padrões. Seu jogo é transformar ideias — e dados — em coisas que funcionam.",
+    cursos:{
+      comp:{nome:"Ciência da Computação",desc:"Programação, algoritmos e sistemas — a redstone do mundo real.",link:"https://ufape.edu.br/CCBCC.CAMUS",img:"assets/personagens/comp.jpg"},
+      dados:{nome:"Ciência de Dados",desc:"Transforma dados em decisões: estatística, algoritmos e inteligência artificial.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/dados.jpg"}
+    }},
+  saber:{nome:"REINO DO SABER",cor:"#5a4a8a",emoji:"📖",
+    desc:"Você é do tipo que entende as pessoas e ajuda a formar quem elas vão ser. Seu jogo é cuidar da mente e do aprendizado de cada um.",
+    cursos:{
+      pedagogia:{nome:"Licenciatura em Pedagogia",desc:"Educação e formação humana — construir quem vai construir o futuro.",link:"https://ufape.edu.br/CCLPE.CAMUS",img:"assets/personagens/pedagogia.jpg"},
+      psicologia:{nome:"Psicologia",desc:"Mente, comportamento e bem-estar — foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/psicologia.jpg"}
+    }},
+  torre:{nome:"TORRE DO ENCANTAMENTO",cor:"#2b4c8c",emoji:"📜",
+    desc:"Você é do tipo que ama as palavras, os livros e as línguas. Seu jogo é encantar o mundo com o que escreve e ensina.",
+    cursos:{
+      letras_ing:{nome:"Letras – Inglês",desc:"Língua inglesa, literatura e ensino — comunicação sem fronteiras.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/letras_ing.jpg"},
+      letras_port:{nome:"Letras – Português",desc:"Língua portuguesa, literatura e ensino — a base da nossa própria língua.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/letras_port.jpg"}
+    }},
+  vila:{nome:"DISTRITO DO COMÉRCIO",cor:"#2e8b7d",emoji:"💠",
+    desc:"Você é do tipo que organiza, negocia e conhece as regras do jogo. Seu jogo é manter o servidor girando — nos negócios e na lei.",
+    cursos:{
+      adm:{nome:"Administração",desc:"Gestão, estratégia e pessoas — liderar projetos e negócios.",link:"http://www.ufape.edu.br/administracao",img:"assets/personagens/adm.jpg"},
+      contabeis:{nome:"Ciências Contábeis",desc:"Números, finanças e decisões — a bússola econômica de qualquer time.",link:"https://ufape.edu.br/cienciascontabeis",img:"assets/personagens/contabeis.jpg"},
+      direito:{nome:"Direito",desc:"Justiça e as regras do jogo em sociedade — com foco em Direito agrário e digital.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/direito.jpg"}
+    }}
+};
+
+/* Perguntas: cada opção soma pontos a um mundo. */
+const QUESTIONS = [
+  {q:"Ao começar um mundo novo, sua primeira missão é...",
+   a:[{t:"Plantar uma roça e domesticar uns bichos",em:"🐄",w:"campo"},
+      {t:"Montar um circuito de redstone / uma fábrica automática",em:"⚙️",w:"forja"},
+      {t:"Ensinar as regras do jogo pra quem tá chegando",em:"🎓",w:"saber"},
+      {t:"Construir uma biblioteca e estudar os livros encantados",em:"📚",w:"torre"},
+      {t:"Abrir uma loja e trocar esmeraldas com os aldeões",em:"💰",w:"vila"}]},
+  {q:"Que item você quer sempre no inventário?",
+   a:[{t:"Enxada, balde de leite e sementes",em:"🌱",w:"campo"},
+      {t:"Redstone, bloco de comando e uma bancada",em:"🔧",w:"forja"},
+      {t:"Livros de regras e um sino de escola",em:"🔔",w:"saber"},
+      {t:"Livro e pena encantados",em:"🪶",w:"torre"},
+      {t:"Esmeraldas e um baú bem organizado",em:"💠",w:"vila"}]},
+  {q:"O problema que você MAIS gosta de resolver é...",
+   a:[{t:"Por que a plantação não cresce ou o animal adoeceu",em:"🩺",w:"campo"},
+      {t:"Por que o código / a máquina não está funcionando",em:"💻",w:"forja"},
+      {t:"Como ajudar alguém a entender melhor a si mesmo ou o mundo",em:"🧠",w:"saber"},
+      {t:"Como traduzir ou escrever algo pra fazer sentido pros outros",em:"✍️",w:"torre"},
+      {t:"Como fazer os recursos renderem mais",em:"📊",w:"vila"}]},
+  {q:"Sua build dos sonhos é...",
+   a:[{t:"Uma fazenda gigante e sustentável",em:"🚜",w:"campo"},
+      {t:"Uma máquina cheia de engenhocas automáticas",em:"🏭",w:"forja"},
+      {t:"Uma escola ou clínica onde todo mundo é acolhido",em:"🏫",w:"saber"},
+      {t:"Uma torre-biblioteca cheia de livros e mapas",em:"🗼",w:"torre"},
+      {t:"Um mercado movimentado, um império de vendas",em:"🏪",w:"vila"}]},
+  {q:"Na sua equipe, você é o player que...",
+   a:[{t:"Cuida da comida e dos bichos de todos",em:"🐔",w:"campo"},
+      {t:"Resolve toda a parte técnica",em:"🛠️",w:"forja"},
+      {t:"Cuida de como cada um do time está se sentindo",em:"💬",w:"saber"},
+      {t:"Escreve as placas, os letreiros e traduz pro time",em:"🗣️",w:"torre"},
+      {t:"Administra o baú comunitário e os recursos",em:"🗂️",w:"vila"}]},
+  {q:"A conquista que te deixaria mais orgulhoso é...",
+   a:[{t:"Alimentar a aldeia inteira",em:"🌾",w:"campo"},
+      {t:"Inventar algo que ninguém tinha feito",em:"🚀",w:"forja"},
+      {t:"Ver alguém aprender ou se sentir melhor por sua causa",em:"🎓",w:"saber"},
+      {t:"Escrever um livro que todo mundo quer ler",em:"📖",w:"torre"},
+      {t:"Fechar o melhor negócio do servidor",em:"🤝",w:"vila"}]}
+];
+
+/* Pergunta de desempate por curso, específica de cada mundo */
+const TIEBREAK = {
+  campo:{q:"Dentro do campo, o que te chama mais?",
+    a:[{t:"O solo, as plantas e a colheita",c:"agronomia"},
+       {t:"Transformar alimentos: processos e qualidade",c:"alimentos"},
+       {t:"A criação e a produção animal",c:"zootecnia"},
+       {t:"Cuidar da saúde dos animais",c:"vet"}]},
+  forja:{q:"Na forja, você prefere transformar...",
+    a:[{t:"Lógica e software, do zero",c:"comp"},
+       {t:"Montanhas de dados em decisões",c:"dados"}]},
+  saber:{q:"No reino do saber, você quer...",
+    a:[{t:"Formar e educar pessoas de todas as idades",c:"pedagogia"},
+       {t:"Entender a mente e ajudar no bem-estar das pessoas",c:"psicologia"}]},
+  torre:{q:"Na torre do encantamento, seu feitiço favorito é...",
+    a:[{t:"Ensinar e traduzir em língua inglesa",c:"letras_ing"},
+       {t:"Ensinar e aprofundar a língua portuguesa",c:"letras_port"}]},
+  vila:{q:"No distrito, seu talento é mais para...",
+    a:[{t:"Liderar pessoas e projetos",c:"adm"},
+       {t:"Cuidar de números e finanças",c:"contabeis"},
+       {t:"Defender causas e interpretar as regras do jogo (as leis)",c:"direito"}]}
+};
+
+/* ---------- LÓGICA ---------- */
+let scores, current, chosenWorld, history, onTiebreak;
+
+/* embaralha uma cópia do array (Fisher-Yates) — impede descobrir o mundo pela posição da resposta */
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function startQuiz(){
+  scores={campo:0,forja:0,vila:0,saber:0,torre:0};
+  current=0; chosenWorld=null; history=[]; onTiebreak=false;
+  document.getElementById('result').style.display='none';
+  document.getElementById('quiz').style.display='block';
+  document.getElementById('quiz-wrap').scrollIntoView({behavior:'smooth'});
+  renderQuestion();
+}
+
+function renderQuestion(){
+  onTiebreak=false;
+  const total=QUESTIONS.length+1;
+  document.getElementById('bar').style.width=((current)/total*100)+'%';
+  const q=QUESTIONS[current];
+  document.getElementById('qcount').textContent='Pergunta '+(current+1)+' de '+total;
+  document.getElementById('qtext').textContent=q.q;
+  const box=document.getElementById('answers'); box.innerHTML='';
+  shuffle(q.a).forEach(opt=>{
+    const b=document.createElement('button');
+    b.className='ans';
+    b.innerHTML='<span class="em">'+opt.em+'</span><span>'+opt.t+'</span>';
+    b.onclick=()=>{scores[opt.w]+=1; history.push(opt.w); current++; next();};
+    box.appendChild(b);
+  });
+  document.getElementById('backBtn').style.display = current>0 ? 'block' : 'none';
+}
+
+function next(){
+  if(current<QUESTIONS.length){ renderQuestion(); }
+  else{ renderTiebreak(); }
+}
+
+function renderTiebreak(){
+  onTiebreak=true;
+  // mundo vencedor
+  chosenWorld=Object.keys(scores).reduce((a,b)=>scores[a]>=scores[b]?a:b);
+  const total=QUESTIONS.length+1;
+  document.getElementById('bar').style.width=((total-1)/total*100)+'%';
+  const tb=TIEBREAK[chosenWorld];
+  document.getElementById('qcount').textContent='Última pergunta — quase lá!';
+  document.getElementById('qtext').textContent=tb.q;
+  const box=document.getElementById('answers'); box.innerHTML='';
+  shuffle(tb.a).forEach(opt=>{
+    const b=document.createElement('button');
+    b.className='ans';
+    b.innerHTML='<span class="em">⛏</span><span>'+opt.t+'</span>';
+    b.onclick=()=>showResult(opt.c);
+    box.appendChild(b);
+  });
+  document.getElementById('backBtn').style.display='block';
+}
+
+/* volta pra pergunta anterior e desfaz a pontuação daquela resposta */
+function goBack(){
+  if(onTiebreak){
+    const w = history.pop();
+    scores[w] -= 1;
+    current = QUESTIONS.length - 1;
+    renderQuestion();
+  } else if(current > 0){
+    const w = history.pop();
+    scores[w] -= 1;
+    current -= 1;
+    renderQuestion();
+  }
+}
+
+function buildAvatar(color){
+  // avatar pixel simples estilo "steve" em blocos, colorido por mundo
+  const skin='#c98a54', hair='#3a2a1a';
+  const grid=[
+    [0,hair,hair,hair,hair,0],
+    [hair,skin,skin,skin,skin,hair],
+    [hair,skin,'#fff',skin,'#fff',hair],
+    [hair,skin,skin,skin,skin,hair],
+    [0,skin,'#7a3b2a','#7a3b2a',skin,0],
+    [0,color,color,color,color,0],
+    [color,color,color,color,color,color],
+    [color,color,'#fff',color,color,color],
+    [0,color,color,color,color,0],
+    [0,'#26456b','#26456b',0,0,0].map((v,i)=>i<4?v:0)
+  ];
+  const legs=[[0,'#26456b','#26456b','#26456b','#26456b',0],['#3a2a1a','#3a2a1a',0,0,'#3a2a1a','#3a2a1a']];
+  const full=grid.slice(0,9).concat(legs);
+  let html='';
+  const cell=16;
+  full.forEach((row,y)=>{
+    row.forEach((c,x)=>{
+      if(c && c!==0){
+        html+='<div class="px" style="left:'+(x*cell)+'px;top:'+(y*cell)+'px;width:'+cell+'px;height:'+cell+'px;background:'+c+';box-shadow:inset -2px -2px 0 rgba(0,0,0,.2)"></div>';
+      }
+    });
+  });
+  return '<div style="position:relative;width:'+(6*cell)+'px;height:'+(11*cell)+'px;margin:0 auto">'+html+'</div>';
+}
+
+function showResult(courseKey){
+  document.getElementById('quiz').style.display='none';
+  const res=document.getElementById('result'); res.style.display='block';
+  const w=WORLDS[chosenWorld], c=w.cursos[courseKey];
+  const card=document.getElementById('resultCard');
+  card.style.background=w.cor;
+  const av=document.getElementById('avatar');
+  if(c.img){
+    av.innerHTML='';
+    const im=document.createElement('img');
+    im.alt='Personagem do curso de '+c.nome+' no UFAPEcraft';
+    im.onerror=function(){ av.innerHTML=buildAvatar(w.cor); };
+    im.src=c.img;
+    av.appendChild(im);
+  }else{
+    av.innerHTML=buildAvatar(w.cor);
+  }
+  document.getElementById('rworld').textContent=w.emoji+' '+w.nome;
+  document.getElementById('rdesc').textContent=w.desc;
+  document.getElementById('rcourse').textContent=c.nome;
+  document.getElementById('rcoursedesc').textContent=c.desc;
+  const lk=document.getElementById('rlink');
+  lk.href=c.link;
+  lk.textContent=c.linkLabel||'🔗 SAIBA MAIS SOBRE O CURSO →';
+  // outros cursos do mundo
+  const outros=Object.values(w.cursos).filter(x=>x.nome!==c.nome).map(x=>x.nome);
+  document.getElementById('others').textContent = outros.length? 'Também no seu mundo: '+outros.join(' · ') : '';
+  document.getElementById('bar').style.width='100%';
+  res.scrollIntoView({behavior:'smooth'});
+  window._lastResult={world:w.nome,course:c.nome};
+}
+
+function shareResult(){
+  const r=window._lastResult;
+  const txt='No UFAPEcraft eu caí no '+r.world+' e meu curso é '+r.course+'! 🎮⛏ Descubra o seu mundo na UFAPE — SiSU 2027.';
+  if(navigator.share){ navigator.share({title:'UFAPEcraft',text:txt}).catch(()=>{}); }
+  else{ navigator.clipboard.writeText(txt).then(()=>alert('Resultado copiado! Cole nas suas redes 📢')).catch(()=>alert(txt)); }
+}
+
+function restart(){ startQuiz(); document.getElementById('top').scrollIntoView({behavior:'smooth'}); }
+</script>
+</body>
+</html>
