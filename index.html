@@ -96,19 +96,75 @@
 
   /* worlds grid */
   .worlds{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
-  .world-card{padding:22px;color:#fff;position:relative;transition:transform .1s}
-  .world-card:hover{transform:translateY(-4px)}
-  .world-card .wico{font-size:44px;margin-bottom:8px;display:block}
+  .world-card{
+    padding:22px;color:#fff;position:relative;transition:transform .1s,filter .1s;
+    cursor:pointer;text-align:left;border:none;font-family:inherit;width:100%;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    min-height:360px;background-size:cover;background-position:center;
+    text-shadow:2px 2px 0 rgba(0,0,0,.55), 0 0 12px rgba(0,0,0,.4);
+  }
+  .world-card:hover{transform:translateY(-4px);filter:brightness(1.08)}
+  .world-card:focus-visible{outline:3px solid #fff}
+  .world-card .wico{
+    position:absolute;top:14px;left:14px;
+    font-size:26px;display:flex;align-items:center;justify-content:center;
+    width:44px;height:44px;background:rgba(18,20,15,.6);
+    border:2px solid rgba(255,255,255,.5);
+  }
   .world-card h3{font-family:'Press Start 2P',monospace;font-size:13px;margin-bottom:10px;line-height:1.6}
-  .world-card p{font-size:19px;margin-bottom:14px;opacity:.95}
+  .world-card p{font-size:19px;margin-bottom:14px}
   .world-card ul{list-style:none}
-  .world-card li{font-size:19px;padding:4px 0;border-top:2px dotted rgba(255,255,255,.35)}
+  .world-card li{font-size:19px;padding:4px 0;border-top:2px dotted rgba(255,255,255,.5);background:rgba(18,20,15,.28)}
   .world-card li:before{content:"\25AA";margin-right:8px;color:var(--gold)}
-  .w-campo{background:var(--verde)}
-  .w-forja{background:var(--vinho)}
-  .w-vila{background:var(--vila)}
-  .w-saber{background:var(--roxo)}
-  .w-torre{background:var(--azul)}
+  .world-card .enter-hint{margin-top:14px;font-size:16px;letter-spacing:1px;color:var(--gold)}
+  .w-campo{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(15,40,22,.88) 100%), url('assets/mundos/campo.jpg')}
+  .w-forja{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(40,14,18,.88) 100%), url('assets/mundos/forja.jpg')}
+  .w-vila{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(12,38,34,.88) 100%), url('assets/mundos/vila.jpg')}
+  .w-saber{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(28,20,42,.88) 100%), url('assets/mundos/saber.jpg')}
+  .w-torre{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(12,20,42,.88) 100%), url('assets/mundos/torre.jpg')}
+
+  /* ===== WORLD PAGE ===== */
+  #world-page{display:none}
+  .world-banner{
+    position:relative;min-height:56vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:flex-end;text-align:center;padding:40px 20px;
+    background-size:cover;background-position:center;
+  }
+  .world-banner .overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(18,20,15,.25) 0%, rgba(18,20,15,.55) 60%, rgba(18,20,15,.92) 100%);
+  }
+  .world-banner .wcontent{position:relative;z-index:1}
+  .world-banner .wico-big{font-size:56px;display:block;margin-bottom:6px}
+  .world-banner h2{font-family:'Press Start 2P',monospace;font-size:clamp(18px,4vw,30px);color:#fff;text-shadow:4px 4px 0 rgba(0,0,0,.4);margin-bottom:10px}
+  .world-banner p{font-size:clamp(18px,2.6vw,24px);color:#f5f2e8;max-width:640px;margin:0 auto;text-shadow:2px 2px 0 rgba(0,0,0,.4)}
+  .course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;padding:50px 20px;max-width:1080px;margin:0 auto}
+  .course-card{background:var(--dark);border:4px solid var(--dark);cursor:pointer;text-align:left;font-family:inherit;color:#fff;padding:0;overflow:hidden;box-shadow:inset -3px -3px 0 rgba(0,0,0,.2),0 5px 0 rgba(0,0,0,.35);transition:transform .08s}
+  .course-card:hover{transform:translateY(-4px)}
+  .course-card:focus-visible{outline:3px solid #fff}
+  .course-card .cc-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-bottom:4px solid var(--dark)}
+  .course-card .cc-body{padding:14px 16px}
+  .course-card h4{font-family:'Press Start 2P',monospace;font-size:13px;line-height:1.6;margin-bottom:8px;color:var(--gold)}
+  .course-card p{font-size:18px;opacity:.9}
+  .back-row{max-width:1080px;margin:0 auto;padding:24px 20px 0}
+
+  /* ===== COURSE PAGE ===== */
+  #course-page{display:none;background:var(--dark);padding-bottom:20px}
+  .course-hero{max-width:1080px;margin:0 auto;padding:40px 20px 10px;display:grid;grid-template-columns:220px 1fr;gap:30px;align-items:center}
+  .course-hero .ch-img{width:100%;border:4px solid var(--dark);box-shadow:inset -4px -4px 0 rgba(0,0,0,.25),0 6px 0 rgba(0,0,0,.35)}
+  .course-hero .ch-badge{display:inline-block;padding:5px 12px;font-size:14px;margin-bottom:10px;color:#fff}
+  .course-hero h2{font-family:'Press Start 2P',monospace;font-size:clamp(16px,3vw,24px);color:#fff;text-shadow:3px 3px 0 rgba(0,0,0,.4);margin-bottom:12px;line-height:1.6}
+  .course-hero .ch-frase{font-size:23px;color:var(--gold)}
+  .course-body{max-width:1080px;margin:0 auto;padding:20px 20px 10px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .cbox{background:rgba(255,255,255,.04);border:4px solid rgba(255,255,255,.12);padding:18px 20px}
+  .cbox h3{font-family:'Press Start 2P',monospace;font-size:14px;color:var(--gold);margin-bottom:12px;line-height:1.6}
+  .cbox p{font-size:19px}
+  .cbox ul{list-style:none}
+  .cbox li{font-size:19px;padding:5px 0;border-top:2px dotted rgba(255,255,255,.2)}
+  .cbox li:before{content:"\25AA";margin-right:8px;color:var(--gold)}
+  .cbox.full{grid-column:1/-1}
+  .course-actions{max-width:1080px;margin:0 auto;padding:26px 20px 10px;display:flex;gap:12px;flex-wrap:wrap}
+  @media(max-width:640px){.course-hero{grid-template-columns:1fr}.course-hero .ch-img{max-width:180px;margin:0 auto}.course-body{grid-template-columns:1fr}}
 
   /* ===== QUIZ ===== */
   #quiz-wrap{background:var(--dark);padding:0}
@@ -177,36 +233,78 @@
   <h2 class="sec">Os 5 mundos da UFAPE</h2>
   <p class="sec-sub">Agrupamos os 13 cursos de graduação em cinco mundos — um para cada área oficial da UFAPE. Cada um tem um jeito de jogar — e um jeito de transformar o Agreste.</p>
   <div class="worlds">
-    <div class="world-card w-campo block">
+    <button class="world-card w-campo block" onclick="openWorld('campo')">
       <span class="wico">🌾</span>
       <h3>Bioma do Campo</h3>
       <p>Pra quem gosta de cultivar, criar e cuidar da vida.</p>
       <ul><li>Agronomia</li><li>Engenharia de Alimentos</li><li>Medicina Veterinária</li><li>Zootecnia</li></ul>
-    </div>
-    <div class="world-card w-forja block">
+      <p class="enter-hint">▶ ENTRAR NO MUNDO</p>
+    </button>
+    <button class="world-card w-forja block" onclick="openWorld('forja')">
       <span class="wico">⚙️</span>
       <h3>Mundo da Forja</h3>
       <p>Pra quem gosta de criar, programar e decifrar dados.</p>
       <ul><li>Ciência da Computação</li><li>Ciência de Dados</li></ul>
-    </div>
-    <div class="world-card w-saber block">
+      <p class="enter-hint">▶ ENTRAR NO MUNDO</p>
+    </button>
+    <button class="world-card w-saber block" onclick="openWorld('saber')">
       <span class="wico">📖</span>
       <h3>Reino do Saber</h3>
       <p>Pra quem gosta de entender e formar gente.</p>
       <ul><li>Pedagogia</li><li>Psicologia</li></ul>
-    </div>
-    <div class="world-card w-torre block">
+      <p class="enter-hint">▶ ENTRAR NO MUNDO</p>
+    </button>
+    <button class="world-card w-torre block" onclick="openWorld('torre')">
       <span class="wico">📜</span>
       <h3>Torre do Encantamento</h3>
       <p>Pra quem gosta de línguas, livros e palavras.</p>
       <ul><li>Letras – Inglês</li><li>Letras – Português</li></ul>
-    </div>
-    <div class="world-card w-vila block">
+      <p class="enter-hint">▶ ENTRAR NO MUNDO</p>
+    </button>
+    <button class="world-card w-vila block" onclick="openWorld('vila')">
       <span class="wico">💠</span>
       <h3>Distrito do Comércio</h3>
       <p>Pra quem gosta de negociar, organizar e conhecer as regras do jogo.</p>
       <ul><li>Administração</li><li>Ciências Contábeis</li><li>Direito</li></ul>
+      <p class="enter-hint">▶ ENTRAR NO MUNDO</p>
+    </button>
+  </div>
+</section>
+
+<!-- WORLD PAGE (lista de cursos de um mundo) -->
+<section id="world-page">
+  <div class="world-banner" id="wpBanner">
+    <div class="overlay"></div>
+    <div class="wcontent">
+      <span class="wico-big" id="wpIco"></span>
+      <h2 id="wpNome"></h2>
+      <p id="wpDesc"></p>
     </div>
+  </div>
+  <div class="back-row"><button class="btn-back" style="margin:0" onclick="backToHome()">← VOLTAR PARA OS MUNDOS</button></div>
+  <div class="course-grid" id="wpCourses"></div>
+</section>
+
+<!-- COURSE PAGE (detalhe de um curso) -->
+<section id="course-page">
+  <div class="back-row"><button class="btn-back" style="margin:0" id="cpBackBtn">← VOLTAR PARA O MUNDO</button></div>
+  <div class="course-hero">
+    <img class="ch-img" id="cpImg" alt="">
+    <div>
+      <span class="ch-badge" id="cpBadge"></span>
+      <h2 id="cpNome"></h2>
+      <p class="ch-frase" id="cpFrase"></p>
+    </div>
+  </div>
+  <div class="course-body">
+    <div class="cbox"><h3>🧩 CARACTERÍSTICAS</h3><ul id="cpCaract"></ul></div>
+    <div class="cbox"><h3>💼 MERCADO DE TRABALHO</h3><p id="cpMercado"></p></div>
+    <div class="cbox"><h3>⭐ HABILIDADES QUE AJUDAM</h3><ul id="cpHabilidades"></ul></div>
+    <div class="cbox"><h3>💡 MITO QUE A GENTE DERRUBA</h3><p id="cpMito"></p></div>
+  </div>
+  <div class="course-actions">
+    <a class="btn-sec" id="cpLink" href="#" target="_blank" rel="noopener">🔗 PÁGINA OFICIAL DO CURSO →</a>
+    <button class="btn-ghost" onclick="startQuiz()">▶ FAZER O QUIZ</button>
   </div>
 </section>
 
@@ -243,7 +341,7 @@
   </div>
 </div>
 
-<footer>
+<footer id="siteFooter">
   <p class="pixel">UFAPEcraft</p>
   <p>Universidade Federal do Agreste de Pernambuco · Garanhuns/PE</p>
   <p class="disclaimer">Protótipo de campanha para o SiSU 2027. Este teste é uma brincadeira de orientação vocacional — a escolha final do curso é sua. Conheça todos os cursos em <a href="https://ufape.edu.br/graduacao" target="_blank">ufape.edu.br/graduacao</a>.</p>
@@ -252,38 +350,103 @@
 <script>
 /* ---------- DADOS ---------- */
 const WORLDS = {
-  campo:{nome:"BIOMA DO CAMPO",cor:"#1f7a3d",emoji:"🌾",
+  campo:{nome:"BIOMA DO CAMPO",cor:"#1f7a3d",emoji:"🌾",imgMundo:"assets/mundos/campo.jpg",
     desc:"Você é do tipo que planta, cria e cuida da vida. Seu jogo é fazer o Agreste florescer.",
     cursos:{
-      agronomia:{nome:"Agronomia",desc:"Ciência do solo, das plantas e da produção sustentável de alimentos.",link:"https://ufape.edu.br/CCBAG.CAMUS",img:"assets/personagens/agronomia.jpg"},
-      alimentos:{nome:"Engenharia de Alimentos",desc:"Transforma matéria-prima em produto: processos, qualidade e inovação.",link:"https://ufape.edu.br/CCBEL.CAMUS",img:"assets/personagens/alimentos.jpg"},
-      vet:{nome:"Medicina Veterinária",desc:"Saúde e bem-estar animal, do pet ao rebanho, e saúde pública.",link:"https://ufape.edu.br/CCBMV.CAMUS",img:"assets/personagens/vet.jpg"},
-      zootecnia:{nome:"Zootecnia",desc:"Produção animal, nutrição e melhoramento — do campo à mesa.",link:"https://ufape.edu.br/CCBZO.CAMUS",img:"assets/personagens/zootecnia.jpg"}
+      agronomia:{nome:"Agronomia",desc:"Ciência do solo, das plantas e da produção sustentável de alimentos.",link:"https://ufape.edu.br/CCBAG.CAMUS",img:"assets/personagens/agronomia.jpg",
+        frase:"Você estuda a terra pra fazer o alimento do Brasil nascer com mais eficiência e menos impacto.",
+        caracteristicas:["Bacharelado com foco em solo, clima, manejo de culturas e sustentabilidade","Muita prática em campo e laboratório, do plantio à colheita","Forte ligação com pesquisa aplicada ao Agreste pernambucano"],
+        mercado:"Cooperativas, empresas de insumos e consultoria agrícola, órgãos públicos (EMATER, Embrapa, secretarias de agricultura), perícia e agronegócio próprio.",
+        habilidades:["Raciocínio lógico e científico","Gosto por trabalho a céu aberto","Atenção a dados e processos","Interesse em sustentabilidade"],
+        mito:"Não é só \"plantar\" — envolve genética, tecnologia, gestão e ciência de ponta aplicada ao campo."},
+      alimentos:{nome:"Engenharia de Alimentos",desc:"Transforma matéria-prima em produto: processos, qualidade e inovação.",link:"https://ufape.edu.br/CCBEL.CAMUS",img:"assets/personagens/alimentos.jpg",
+        frase:"Você transforma matéria-prima em produto seguro, saboroso e de qualidade, em escala de fábrica.",
+        caracteristicas:["Une química, engenharia e processos industriais","Passa por laboratórios de análise de alimentos e plantas-piloto","Foco em segurança alimentar e controle de qualidade"],
+        mercado:"Indústrias de alimentos e bebidas, laticínios, controle de qualidade, vigilância sanitária, pesquisa e desenvolvimento de novos produtos.",
+        habilidades:["Afinidade com química e processos","Organização e atenção a detalhes","Interesse em inovação de produto"],
+        mito:"Não é cozinhar — é ciência e engenharia aplicadas à produção de alimentos em grande escala."},
+      vet:{nome:"Medicina Veterinária",desc:"Saúde e bem-estar animal, do pet ao rebanho, e saúde pública.",link:"https://ufape.edu.br/CCBMV.CAMUS",img:"assets/personagens/vet.jpg",
+        frase:"Você cuida da saúde animal — do pet da vizinhança ao rebanho de toda uma cadeia produtiva.",
+        caracteristicas:["Bacharelado com forte carga prática em clínica, cirurgia e saúde pública","Atua com pequenos e grandes animais","Envolve também produção animal e vigilância sanitária"],
+        mercado:"Clínicas e hospitais veterinários, agropecuária, indústria de alimentos de origem animal, saúde pública (zoonoses), concursos e pesquisa.",
+        habilidades:["Empatia e cuidado","Estabilidade emocional para situações difíceis","Interesse em biologia e ciências da saúde"],
+        mito:"Vai muito além de cuidar de cães e gatos — inclui saúde pública, produção animal e segurança alimentar."},
+      zootecnia:{nome:"Zootecnia",desc:"Produção animal, nutrição e melhoramento — do campo à mesa.",link:"https://ufape.edu.br/CCBZO.CAMUS",img:"assets/personagens/zootecnia.jpg",
+        frase:"Você planeja a produção animal do jeito certo — nutrição, genética e manejo, do nascimento ao mercado.",
+        caracteristicas:["Foco em criação, nutrição, melhoramento genético e manejo de rebanhos","Forte presença em fazendas experimentais e visitas técnicas","Conecta ciência com produção rural"],
+        mercado:"Fazendas e cooperativas, indústria de ração e nutrição animal, consultoria técnica, assistência rural, pesquisa.",
+        habilidades:["Gosto por trabalho de campo","Raciocínio técnico e científico","Interesse em produção sustentável"],
+        mito:"Não se confunde com Veterinária: aqui o foco é a produção animal eficiente, não a clínica."}
     }},
-  forja:{nome:"MUNDO DA FORJA",cor:"#8a2432",emoji:"⚙️",
+  forja:{nome:"MUNDO DA FORJA",cor:"#8a2432",emoji:"⚙️",imgMundo:"assets/mundos/forja.jpg",
     desc:"Você é do tipo que constrói engenhocas, programa e decifra padrões. Seu jogo é transformar ideias — e dados — em coisas que funcionam.",
     cursos:{
-      comp:{nome:"Ciência da Computação",desc:"Programação, algoritmos e sistemas — a redstone do mundo real.",link:"https://ufape.edu.br/CCBCC.CAMUS",img:"assets/personagens/comp.jpg"},
-      dados:{nome:"Ciência de Dados",desc:"Transforma dados em decisões: estatística, algoritmos e inteligência artificial.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/dados.jpg"}
+      comp:{nome:"Ciência da Computação",desc:"Programação, algoritmos e sistemas — a redstone do mundo real.",link:"https://ufape.edu.br/CCBCC.CAMUS",img:"assets/personagens/comp.jpg",
+        frase:"Você constrói os sistemas que fazem o mundo digital funcionar, do código à infraestrutura.",
+        caracteristicas:["Bacharelado com base sólida em lógica, algoritmos e matemática","Programação, engenharia de software, redes e inteligência artificial","Muitos projetos práticos e desafios de resolução de problemas"],
+        mercado:"Desenvolvimento de software, startups, empresas de tecnologia, setor público (governo digital), pesquisa em IA, trabalho remoto — inclusive internacional.",
+        habilidades:["Raciocínio lógico","Paciência para resolver problemas complexos","Autoaprendizado constante (a área muda rápido)"],
+        mito:"Programar é só uma parte — a área também é sobre resolver problemas e pensar em sistemas."},
+      dados:{nome:"Ciência de Dados",desc:"Transforma dados em decisões: estatística, algoritmos e inteligência artificial.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/dados.jpg",
+        frase:"Você transforma um monte de números soltos em decisões que fazem sentido.",
+        caracteristicas:["Curso novo na UFAPE — une estatística, programação e inteligência artificial","Foco em análise, modelagem e visualização de dados","Forte interseção com todas as outras áreas (saúde, agro, negócios)"],
+        mercado:"Empresas de todos os setores que usam dados para decisão, consultoria, pesquisa, setor público, mercado de IA em expansão.",
+        habilidades:["Gosto por matemática e estatística","Curiosidade investigativa","Comunicação para traduzir números em histórias"],
+        mito:"Não é só \"mexer com IA\" — a base é entender dados com rigor antes de qualquer modelo."}
     }},
-  saber:{nome:"REINO DO SABER",cor:"#5a4a8a",emoji:"📖",
+  saber:{nome:"REINO DO SABER",cor:"#5a4a8a",emoji:"📖",imgMundo:"assets/mundos/saber.jpg",
     desc:"Você é do tipo que entende as pessoas e ajuda a formar quem elas vão ser. Seu jogo é cuidar da mente e do aprendizado de cada um.",
     cursos:{
-      pedagogia:{nome:"Licenciatura em Pedagogia",desc:"Educação e formação humana — construir quem vai construir o futuro.",link:"https://ufape.edu.br/CCLPE.CAMUS",img:"assets/personagens/pedagogia.jpg"},
-      psicologia:{nome:"Psicologia",desc:"Mente, comportamento e bem-estar — foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/psicologia.jpg"}
+      pedagogia:{nome:"Licenciatura em Pedagogia",desc:"Educação e formação humana — construir quem vai construir o futuro.",link:"https://ufape.edu.br/CCLPE.CAMUS",img:"assets/personagens/pedagogia.jpg",
+        frase:"Você forma quem vai formar o futuro — dentro e fora da sala de aula.",
+        caracteristicas:["Licenciatura com estágio supervisionado em escolas","Forma para docência na educação infantil e anos iniciais, além de gestão escolar","Une teoria pedagógica com prática em sala"],
+        mercado:"Redes públicas e privadas de ensino, gestão e coordenação escolar, educação corporativa, produção de material didático, ONGs educacionais.",
+        habilidades:["Paciência e escuta","Criatividade para ensinar","Compromisso social"],
+        mito:"Não é só \"dar aula\" — envolve gestão, currículo, inclusão e pesquisa em educação."},
+      psicologia:{nome:"Psicologia",desc:"Mente, comportamento e bem-estar — foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/psicologia.jpg",
+        frase:"Você entende a mente e o comportamento para ajudar pessoas a se sentirem e funcionarem melhor.",
+        caracteristicas:["Curso novo na UFAPE, com foco clínico e educacional","Combina teoria, pesquisa e prática supervisionada (estágios e clínica-escola)","Formação generalista, com aprofundamento nas áreas de interesse do estudante"],
+        mercado:"Clínicas e consultórios, escolas (psicologia escolar), hospitais, RH e empresas, políticas públicas de saúde mental, pesquisa.",
+        habilidades:["Escuta ativa e empatia","Ética e sigilo","Interesse em ciência do comportamento"],
+        mito:"Psicólogo não \"lê mentes\" — trabalha com método científico para entender comportamento e emoções."}
     }},
-  torre:{nome:"TORRE DO ENCANTAMENTO",cor:"#2b4c8c",emoji:"📜",
+  torre:{nome:"TORRE DO ENCANTAMENTO",cor:"#2b4c8c",emoji:"📜",imgMundo:"assets/mundos/torre.jpg",
     desc:"Você é do tipo que ama as palavras, os livros e as línguas. Seu jogo é encantar o mundo com o que escreve e ensina.",
     cursos:{
-      letras_ing:{nome:"Letras – Inglês",desc:"Língua inglesa, literatura e ensino — comunicação sem fronteiras.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/letras_ing.jpg"},
-      letras_port:{nome:"Letras – Português",desc:"Língua portuguesa, literatura e ensino — a base da nossa própria língua.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/letras_port.jpg"}
+      letras_ing:{nome:"Letras – Inglês",desc:"Língua inglesa, literatura e ensino — comunicação sem fronteiras.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/letras_ing.jpg",
+        frase:"Você domina a língua que conecta o Agreste ao resto do mundo.",
+        caracteristicas:["Licenciatura que forma professor de língua inglesa e suas literaturas","A partir de 2027.1 é uma habilitação própria, separada do curso combinado anterior","Estágio supervisionado em escolas públicas e privadas"],
+        mercado:"Docência em escolas e cursos de idiomas, tradução, revisão, produção de conteúdo bilíngue, concursos públicos.",
+        habilidades:["Gosto por idiomas e comunicação","Disciplina de estudo constante","Interesse em ensinar"],
+        mito:"Não é só \"falar inglês bem\" — é entender a língua, a literatura e como ensiná-la."},
+      letras_port:{nome:"Letras – Português",desc:"Língua portuguesa, literatura e ensino — a base da nossa própria língua.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/letras_port.jpg",
+        frase:"Você domina a língua que a gente usa todos os dias — e ensina outros a usá-la melhor.",
+        caracteristicas:["Licenciatura que forma professor de língua portuguesa e literaturas de língua portuguesa","A partir de 2027.1 é uma habilitação própria, separada do curso combinado anterior","Estágio supervisionado em escolas públicas e privadas"],
+        mercado:"Docência em escolas, revisão e produção textual, elaboração de material didático, concursos públicos, editoras.",
+        habilidades:["Gosto por leitura e escrita","Atenção à linguagem","Interesse em ensinar"],
+        mito:"Não é só gramática — envolve literatura, cultura e a forma como a linguagem constrói o mundo."}
     }},
-  vila:{nome:"DISTRITO DO COMÉRCIO",cor:"#2e8b7d",emoji:"💠",
+  vila:{nome:"DISTRITO DO COMÉRCIO",cor:"#2e8b7d",emoji:"💠",imgMundo:"assets/mundos/vila.jpg",
     desc:"Você é do tipo que organiza, negocia e conhece as regras do jogo. Seu jogo é manter o servidor girando — nos negócios e na lei.",
     cursos:{
-      adm:{nome:"Administração",desc:"Gestão, estratégia e pessoas — liderar projetos e negócios.",link:"http://www.ufape.edu.br/administracao",img:"assets/personagens/adm.jpg"},
-      contabeis:{nome:"Ciências Contábeis",desc:"Números, finanças e decisões — a bússola econômica de qualquer time.",link:"https://ufape.edu.br/cienciascontabeis",img:"assets/personagens/contabeis.jpg"},
-      direito:{nome:"Direito",desc:"Justiça e as regras do jogo em sociedade — com foco em Direito agrário e digital.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/direito.jpg"}
+      adm:{nome:"Administração",desc:"Gestão, estratégia e pessoas — liderar projetos e negócios.",link:"http://www.ufape.edu.br/administracao",img:"assets/personagens/adm.jpg",
+        frase:"Você organiza pessoas, processos e recursos pra fazer qualquer negócio funcionar melhor.",
+        caracteristicas:["Bacharelado generalista — gestão de pessoas, finanças, marketing, operações e estratégia","Muitos estudos de caso e projetos com empresas reais","Base sólida para empreender ou atuar em qualquer setor"],
+        mercado:"Empresas privadas de todos os portes, setor público, ONGs, consultoria, empreendedorismo próprio.",
+        habilidades:["Visão de conjunto (big picture)","Liderança e comunicação","Capacidade de decidir com dados incompletos"],
+        mito:"Não forma \"chefe\" automaticamente — forma quem sabe organizar times e recursos, liderando ou como parte do time."},
+      contabeis:{nome:"Ciências Contábeis",desc:"Números, finanças e decisões — a bússola econômica de qualquer time.",link:"https://ufape.edu.br/cienciascontabeis",img:"assets/personagens/contabeis.jpg",
+        frase:"Você é quem entende de verdade pra onde vai o dinheiro — e transforma isso em decisão.",
+        caracteristicas:["Bacharelado técnico, com forte base em legislação, finanças e contabilidade","Habilita para o exame e o registro na profissão contábil (CFC)","Alta empregabilidade por ser exigência legal em empresas"],
+        mercado:"Escritórios de contabilidade, controladoria e auditoria em empresas, setor público, perícia contábil, consultoria tributária.",
+        habilidades:["Atenção a detalhes e números","Organização e ética","Interesse em finanças e legislação"],
+        mito:"Não é só \"fazer imposto de renda\" — é a base de decisão financeira de qualquer negócio ou governo."},
+      direito:{nome:"Direito",desc:"Justiça e as regras do jogo em sociedade — com foco em Direito agrário e digital.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/direito.jpg",
+        frase:"Você aprende as regras do jogo da sociedade — com foco em Direito agrário e digital na UFAPE.",
+        caracteristicas:["Curso novo na UFAPE, com PPC focado em Direito agrário e digital","Combina teoria jurídica com prática em núcleo de assistência jurídica","Habilita para o exame da OAB após a formação"],
+        mercado:"Advocacia, concursos públicos (magistratura, MP, carreiras jurídicas), assessoria a produtores rurais e agronegócio, direito digital e proteção de dados.",
+        habilidades:["Argumentação e leitura crítica","Interesse em justiça social","Organização para lidar com prazos e processos"],
+        mito:"Não é só decorar leis — é interpretar, argumentar e aplicar a lei a casos reais, inclusive no campo e no digital."}
     }}
 };
 
@@ -349,7 +512,73 @@ const TIEBREAK = {
        {t:"Defender causas e interpretar as regras do jogo (as leis)",c:"direito"}]}
 };
 
-/* ---------- LÓGICA ---------- */
+/* ---------- NAVEGAÇÃO: HOME / MUNDO / CURSO ---------- */
+let currentWorldKey = null;
+
+function setMainVisible(show){
+  ['top','mundos','quiz-wrap'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.style.display = show ? '' : 'none';
+  });
+  document.getElementById('siteFooter').style.display = show ? '' : 'none';
+}
+
+function openWorld(worldKey){
+  currentWorldKey = worldKey;
+  const w = WORLDS[worldKey];
+  setMainVisible(false);
+  document.getElementById('course-page').style.display='none';
+  const wp = document.getElementById('world-page');
+  wp.style.display='block';
+  const banner = document.getElementById('wpBanner');
+  banner.style.backgroundImage = "url('"+w.imgMundo+"')";
+  document.getElementById('wpIco').textContent = w.emoji;
+  document.getElementById('wpNome').textContent = w.nome;
+  document.getElementById('wpDesc').textContent = w.desc;
+  const grid = document.getElementById('wpCourses');
+  grid.innerHTML='';
+  Object.entries(w.cursos).forEach(([key,c])=>{
+    const b=document.createElement('button');
+    b.className='course-card block';
+    b.onclick=()=>openCourse(worldKey,key);
+    b.innerHTML='<img class="cc-img" src="'+c.img+'" alt="Personagem do curso de '+c.nome+'"><div class="cc-body"><h4>'+c.nome+'</h4><p>'+c.desc+'</p></div>';
+    grid.appendChild(b);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openCourse(worldKey,courseKey){
+  currentWorldKey = worldKey;
+  const w = WORLDS[worldKey], c = w.cursos[courseKey];
+  document.getElementById('world-page').style.display='none';
+  const cp = document.getElementById('course-page');
+  cp.style.display='block';
+  document.getElementById('cpImg').src = c.img;
+  document.getElementById('cpImg').alt = 'Personagem do curso de '+c.nome;
+  const badge = document.getElementById('cpBadge');
+  badge.textContent = w.emoji+' '+w.nome;
+  badge.style.background = w.cor;
+  document.getElementById('cpNome').textContent = c.nome;
+  document.getElementById('cpFrase').textContent = c.frase || c.desc;
+  const caractEl = document.getElementById('cpCaract'); caractEl.innerHTML='';
+  (c.caracteristicas||[]).forEach(t=>{ const li=document.createElement('li'); li.textContent=t; caractEl.appendChild(li); });
+  document.getElementById('cpMercado').textContent = c.mercado || '';
+  const habEl = document.getElementById('cpHabilidades'); habEl.innerHTML='';
+  (c.habilidades||[]).forEach(t=>{ const li=document.createElement('li'); li.textContent=t; habEl.appendChild(li); });
+  document.getElementById('cpMito').textContent = c.mito || '';
+  const lk = document.getElementById('cpLink'); lk.href = c.link;
+  document.getElementById('cpBackBtn').onclick = ()=>openWorld(worldKey);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function backToHome(){
+  document.getElementById('world-page').style.display='none';
+  document.getElementById('course-page').style.display='none';
+  setMainVisible(true);
+  document.getElementById('mundos').scrollIntoView({behavior:'smooth'});
+}
+
+/* ---------- LÓGICA DO QUIZ ---------- */
 let scores, current, chosenWorld, history, onTiebreak;
 
 /* embaralha uma cópia do array (Fisher-Yates) — impede descobrir o mundo pela posição da resposta */
@@ -363,16 +592,34 @@ function shuffle(arr){
 }
 
 function startQuiz(){
+  document.getElementById('world-page').style.display='none';
+  document.getElementById('course-page').style.display='none';
+  setMainVisible(true);
   scores={campo:0,forja:0,vila:0,saber:0,torre:0};
   current=0; chosenWorld=null; history=[]; onTiebreak=false;
+  clearQuizBg();
   document.getElementById('result').style.display='none';
   document.getElementById('quiz').style.display='block';
   document.getElementById('quiz-wrap').scrollIntoView({behavior:'smooth'});
   renderQuestion();
 }
 
+/* imagem do mundo ao fundo, só na pergunta final (desempate) */
+function setQuizBg(worldKey){
+  const wrap = document.getElementById('quiz-wrap');
+  const w = WORLDS[worldKey];
+  wrap.style.backgroundImage = "linear-gradient(180deg, rgba(22,25,21,.82) 0%, rgba(22,25,21,.93) 100%), url('"+w.imgMundo+"')";
+  wrap.style.backgroundSize='cover';
+  wrap.style.backgroundPosition='center';
+}
+function clearQuizBg(){
+  const wrap = document.getElementById('quiz-wrap');
+  wrap.style.backgroundImage='';
+}
+
 function renderQuestion(){
   onTiebreak=false;
+  clearQuizBg();
   const total=QUESTIONS.length+1;
   document.getElementById('bar').style.width=((current)/total*100)+'%';
   const q=QUESTIONS[current];
@@ -398,6 +645,7 @@ function renderTiebreak(){
   onTiebreak=true;
   // mundo vencedor
   chosenWorld=Object.keys(scores).reduce((a,b)=>scores[a]>=scores[b]?a:b);
+  setQuizBg(chosenWorld);
   const total=QUESTIONS.length+1;
   document.getElementById('bar').style.width=((total-1)/total*100)+'%';
   const tb=TIEBREAK[chosenWorld];
