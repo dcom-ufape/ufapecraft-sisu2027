@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UFAPEcraft — Descubra o seu mundo | SiSU 2027</title>
+<title>UFAPEcraft: Descubra o seu mundo | SiSU 2027</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon-apple.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
@@ -231,7 +234,7 @@
 <!-- WORLDS -->
 <section id="mundos">
   <h2 class="sec">Os 5 mundos da UFAPE</h2>
-  <p class="sec-sub">Agrupamos os 13 cursos de graduação em cinco mundos — um para cada área oficial da UFAPE. Cada um tem um jeito de jogar — e um jeito de transformar o Agreste.</p>
+  <p class="sec-sub">Agrupamos os 13 cursos de graduação em cinco mundos, um para cada área oficial da UFAPE. Cada um tem um jeito de jogar e um jeito de transformar o Agreste.</p>
   <div class="worlds">
     <button class="world-card w-campo block" onclick="openWorld('campo')">
       <span class="wico">🌾</span>
@@ -304,6 +307,7 @@
   </div>
   <div class="course-actions">
     <a class="btn-sec" id="cpLink" href="#" target="_blank" rel="noopener">🔗 PÁGINA OFICIAL DO CURSO →</a>
+    <a class="btn-sec" id="cpInsta" href="#" target="_blank" rel="noopener">📷 SEGUIR NO INSTAGRAM →</a>
     <button class="btn-ghost" onclick="startQuiz()">▶ FAZER O QUIZ</button>
   </div>
 </section>
@@ -344,7 +348,7 @@
 <footer id="siteFooter">
   <p class="pixel">UFAPEcraft</p>
   <p>Universidade Federal do Agreste de Pernambuco · Garanhuns/PE</p>
-  <p class="disclaimer">Protótipo de campanha para o SiSU 2027. Este teste é uma brincadeira de orientação vocacional — a escolha final do curso é sua. Conheça todos os cursos em <a href="https://ufape.edu.br/graduacao" target="_blank">ufape.edu.br/graduacao</a>.</p>
+  <p class="disclaimer">Campanha para o SiSU 2027. Este teste é uma brincadeira de orientação vocacional: a escolha final do curso é sua. Conheça todos os cursos em <a href="https://ufape.edu.br/graduacao" target="_blank">ufape.edu.br/graduacao</a>.</p>
 </footer>
 
 <script>
@@ -353,100 +357,100 @@ const WORLDS = {
   campo:{nome:"BIOMA DO CAMPO",cor:"#1f7a3d",emoji:"🌾",imgMundo:"assets/mundos/campo.jpg",
     desc:"Você é do tipo que planta, cria e cuida da vida. Seu jogo é fazer o Agreste florescer.",
     cursos:{
-      agronomia:{nome:"Agronomia",desc:"Ciência do solo, das plantas e da produção sustentável de alimentos.",link:"https://ufape.edu.br/CCBAG.CAMUS",img:"assets/personagens/agronomia.jpg",
+      agronomia:{nome:"Agronomia",desc:"Ciência do solo, das plantas e da produção sustentável de alimentos.",link:"https://ufape.edu.br/CCBAG.CAMUS",insta:"https://www.instagram.com/agronomia.ufape/",img:"assets/personagens/agronomia.jpg",
         frase:"Você estuda a terra pra fazer o alimento do Brasil nascer com mais eficiência e menos impacto.",
         caracteristicas:["Bacharelado com foco em solo, clima, manejo de culturas e sustentabilidade","Muita prática em campo e laboratório, do plantio à colheita","Forte ligação com pesquisa aplicada ao Agreste pernambucano"],
         mercado:"Cooperativas, empresas de insumos e consultoria agrícola, órgãos públicos (EMATER, Embrapa, secretarias de agricultura), perícia e agronegócio próprio.",
         habilidades:["Raciocínio lógico e científico","Gosto por trabalho a céu aberto","Atenção a dados e processos","Interesse em sustentabilidade"],
-        mito:"Não é só \"plantar\" — envolve genética, tecnologia, gestão e ciência de ponta aplicada ao campo."},
-      alimentos:{nome:"Engenharia de Alimentos",desc:"Transforma matéria-prima em produto: processos, qualidade e inovação.",link:"https://ufape.edu.br/CCBEL.CAMUS",img:"assets/personagens/alimentos.jpg",
+        mito:"Não é só \"plantar\": envolve genética, tecnologia, gestão e ciência de ponta aplicada ao campo."},
+      alimentos:{nome:"Engenharia de Alimentos",desc:"Transforma matéria-prima em produto: processos, qualidade e inovação.",link:"https://ufape.edu.br/CCBEL.CAMUS",insta:"https://www.instagram.com/engenhariadealimentos.ufape/",img:"assets/personagens/alimentos.jpg",
         frase:"Você transforma matéria-prima em produto seguro, saboroso e de qualidade, em escala de fábrica.",
         caracteristicas:["Une química, engenharia e processos industriais","Passa por laboratórios de análise de alimentos e plantas-piloto","Foco em segurança alimentar e controle de qualidade"],
         mercado:"Indústrias de alimentos e bebidas, laticínios, controle de qualidade, vigilância sanitária, pesquisa e desenvolvimento de novos produtos.",
         habilidades:["Afinidade com química e processos","Organização e atenção a detalhes","Interesse em inovação de produto"],
-        mito:"Não é cozinhar — é ciência e engenharia aplicadas à produção de alimentos em grande escala."},
-      vet:{nome:"Medicina Veterinária",desc:"Saúde e bem-estar animal, do pet ao rebanho, e saúde pública.",link:"https://ufape.edu.br/CCBMV.CAMUS",img:"assets/personagens/vet.jpg",
-        frase:"Você cuida da saúde animal — do pet da vizinhança ao rebanho de toda uma cadeia produtiva.",
+        mito:"Não é cozinhar: é ciência e engenharia aplicadas à produção de alimentos em grande escala."},
+      vet:{nome:"Medicina Veterinária",desc:"Saúde e bem-estar animal, do pet ao rebanho, e saúde pública.",link:"https://ufape.edu.br/CCBMV.CAMUS",insta:"https://www.instagram.com/veterinariaufapeofc/",img:"assets/personagens/vet.jpg",
+        frase:"Você cuida da saúde animal, do pet da vizinhança ao rebanho de toda uma cadeia produtiva.",
         caracteristicas:["Bacharelado com forte carga prática em clínica, cirurgia e saúde pública","Atua com pequenos e grandes animais","Envolve também produção animal e vigilância sanitária"],
         mercado:"Clínicas e hospitais veterinários, agropecuária, indústria de alimentos de origem animal, saúde pública (zoonoses), concursos e pesquisa.",
         habilidades:["Empatia e cuidado","Estabilidade emocional para situações difíceis","Interesse em biologia e ciências da saúde"],
-        mito:"Vai muito além de cuidar de cães e gatos — inclui saúde pública, produção animal e segurança alimentar."},
-      zootecnia:{nome:"Zootecnia",desc:"Produção animal, nutrição e melhoramento — do campo à mesa.",link:"https://ufape.edu.br/CCBZO.CAMUS",img:"assets/personagens/zootecnia.jpg",
-        frase:"Você planeja a produção animal do jeito certo — nutrição, genética e manejo, do nascimento ao mercado.",
+        mito:"Vai muito além de cuidar de cães e gatos: inclui saúde pública, produção animal e segurança alimentar."},
+      zootecnia:{nome:"Zootecnia",desc:"Produção animal, nutrição e melhoramento: do campo à mesa.",link:"https://ufape.edu.br/CCBZO.CAMUS",insta:"https://www.instagram.com/zootecnia.ufape/",img:"assets/personagens/zootecnia.jpg",
+        frase:"Você planeja a produção animal do jeito certo: nutrição, genética e manejo, do nascimento ao mercado.",
         caracteristicas:["Foco em criação, nutrição, melhoramento genético e manejo de rebanhos","Forte presença em fazendas experimentais e visitas técnicas","Conecta ciência com produção rural"],
         mercado:"Fazendas e cooperativas, indústria de ração e nutrição animal, consultoria técnica, assistência rural, pesquisa.",
         habilidades:["Gosto por trabalho de campo","Raciocínio técnico e científico","Interesse em produção sustentável"],
         mito:"Não se confunde com Veterinária: aqui o foco é a produção animal eficiente, não a clínica."}
     }},
   forja:{nome:"MUNDO DA FORJA",cor:"#8a2432",emoji:"⚙️",imgMundo:"assets/mundos/forja.jpg",
-    desc:"Você é do tipo que constrói engenhocas, programa e decifra padrões. Seu jogo é transformar ideias — e dados — em coisas que funcionam.",
+    desc:"Você é do tipo que constrói engenhocas, programa e decifra padrões. Seu jogo é transformar ideias e dados em coisas que funcionam.",
     cursos:{
-      comp:{nome:"Ciência da Computação",desc:"Programação, algoritmos e sistemas — a redstone do mundo real.",link:"https://ufape.edu.br/CCBCC.CAMUS",img:"assets/personagens/comp.jpg",
+      comp:{nome:"Ciência da Computação",desc:"Programação, algoritmos e sistemas: a redstone do mundo real.",link:"https://ufape.edu.br/CCBCC.CAMUS",insta:"https://www.instagram.com/bccufape/",img:"assets/personagens/comp.jpg",
         frase:"Você constrói os sistemas que fazem o mundo digital funcionar, do código à infraestrutura.",
         caracteristicas:["Bacharelado com base sólida em lógica, algoritmos e matemática","Programação, engenharia de software, redes e inteligência artificial","Muitos projetos práticos e desafios de resolução de problemas"],
-        mercado:"Desenvolvimento de software, startups, empresas de tecnologia, setor público (governo digital), pesquisa em IA, trabalho remoto — inclusive internacional.",
+        mercado:"Desenvolvimento de software, startups, empresas de tecnologia, setor público (governo digital), pesquisa em IA, trabalho remoto, inclusive internacional.",
         habilidades:["Raciocínio lógico","Paciência para resolver problemas complexos","Autoaprendizado constante (a área muda rápido)"],
-        mito:"Programar é só uma parte — a área também é sobre resolver problemas e pensar em sistemas."},
-      dados:{nome:"Ciência de Dados",desc:"Transforma dados em decisões: estatística, algoritmos e inteligência artificial.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/dados.jpg",
+        mito:"Programar é só uma parte: a área também é sobre resolver problemas e pensar em sistemas."},
+      dados:{nome:"Ciência de Dados",desc:"Transforma dados em decisões: estatística, algoritmos e inteligência artificial.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/dados.jpg",
         frase:"Você transforma um monte de números soltos em decisões que fazem sentido.",
-        caracteristicas:["Curso novo na UFAPE — une estatística, programação e inteligência artificial","Foco em análise, modelagem e visualização de dados","Forte interseção com todas as outras áreas (saúde, agro, negócios)"],
+        caracteristicas:["Curso novo na UFAPE: une estatística, programação e inteligência artificial","Foco em análise, modelagem e visualização de dados","Forte interseção com todas as outras áreas (saúde, agro, negócios)"],
         mercado:"Empresas de todos os setores que usam dados para decisão, consultoria, pesquisa, setor público, mercado de IA em expansão.",
         habilidades:["Gosto por matemática e estatística","Curiosidade investigativa","Comunicação para traduzir números em histórias"],
-        mito:"Não é só \"mexer com IA\" — a base é entender dados com rigor antes de qualquer modelo."}
+        mito:"Não é só \"mexer com IA\": a base é entender dados com rigor antes de qualquer modelo."}
     }},
   saber:{nome:"REINO DO SABER",cor:"#5a4a8a",emoji:"📖",imgMundo:"assets/mundos/saber.jpg",
     desc:"Você é do tipo que entende as pessoas e ajuda a formar quem elas vão ser. Seu jogo é cuidar da mente e do aprendizado de cada um.",
     cursos:{
-      pedagogia:{nome:"Licenciatura em Pedagogia",desc:"Educação e formação humana — construir quem vai construir o futuro.",link:"https://ufape.edu.br/CCLPE.CAMUS",img:"assets/personagens/pedagogia.jpg",
-        frase:"Você forma quem vai formar o futuro — dentro e fora da sala de aula.",
+      pedagogia:{nome:"Licenciatura em Pedagogia",desc:"Educação e formação humana: construir quem vai construir o futuro.",link:"https://ufape.edu.br/CCLPE.CAMUS",insta:"https://www.instagram.com/pedagogiaufape/",img:"assets/personagens/pedagogia.jpg",
+        frase:"Você forma quem vai formar o futuro, dentro e fora da sala de aula.",
         caracteristicas:["Licenciatura com estágio supervisionado em escolas","Forma para docência na educação infantil e anos iniciais, além de gestão escolar","Une teoria pedagógica com prática em sala"],
         mercado:"Redes públicas e privadas de ensino, gestão e coordenação escolar, educação corporativa, produção de material didático, ONGs educacionais.",
         habilidades:["Paciência e escuta","Criatividade para ensinar","Compromisso social"],
-        mito:"Não é só \"dar aula\" — envolve gestão, currículo, inclusão e pesquisa em educação."},
-      psicologia:{nome:"Psicologia",desc:"Mente, comportamento e bem-estar — foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/psicologia.jpg",
+        mito:"Não é só \"dar aula\": envolve gestão, currículo, inclusão e pesquisa em educação."},
+      psicologia:{nome:"Psicologia",desc:"Mente, comportamento e bem-estar: foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/psicologia.jpg",
         frase:"Você entende a mente e o comportamento para ajudar pessoas a se sentirem e funcionarem melhor.",
         caracteristicas:["Curso novo na UFAPE, com foco clínico e educacional","Combina teoria, pesquisa e prática supervisionada (estágios e clínica-escola)","Formação generalista, com aprofundamento nas áreas de interesse do estudante"],
         mercado:"Clínicas e consultórios, escolas (psicologia escolar), hospitais, RH e empresas, políticas públicas de saúde mental, pesquisa.",
         habilidades:["Escuta ativa e empatia","Ética e sigilo","Interesse em ciência do comportamento"],
-        mito:"Psicólogo não \"lê mentes\" — trabalha com método científico para entender comportamento e emoções."}
+        mito:"Psicólogo não \"lê mentes\": trabalha com método científico para entender comportamento e emoções."}
     }},
   torre:{nome:"TORRE DO ENCANTAMENTO",cor:"#2b4c8c",emoji:"📜",imgMundo:"assets/mundos/torre.jpg",
     desc:"Você é do tipo que ama as palavras, os livros e as línguas. Seu jogo é encantar o mundo com o que escreve e ensina.",
     cursos:{
-      letras_ing:{nome:"Letras – Inglês",desc:"Língua inglesa, literatura e ensino — comunicação sem fronteiras.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/letras_ing.jpg",
+      letras_ing:{nome:"Letras – Inglês",desc:"Língua inglesa, literatura e ensino: comunicação sem fronteiras.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/letrasufape/",img:"assets/personagens/letras_ing.jpg",
         frase:"Você domina a língua que conecta o Agreste ao resto do mundo.",
         caracteristicas:["Licenciatura que forma professor de língua inglesa e suas literaturas","A partir de 2027.1 é uma habilitação própria, separada do curso combinado anterior","Estágio supervisionado em escolas públicas e privadas"],
         mercado:"Docência em escolas e cursos de idiomas, tradução, revisão, produção de conteúdo bilíngue, concursos públicos.",
         habilidades:["Gosto por idiomas e comunicação","Disciplina de estudo constante","Interesse em ensinar"],
-        mito:"Não é só \"falar inglês bem\" — é entender a língua, a literatura e como ensiná-la."},
-      letras_port:{nome:"Letras – Português",desc:"Língua portuguesa, literatura e ensino — a base da nossa própria língua.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/letras_port.jpg",
-        frase:"Você domina a língua que a gente usa todos os dias — e ensina outros a usá-la melhor.",
+        mito:"Não é só \"falar inglês bem\": é entender a língua, a literatura e como ensiná-la."},
+      letras_port:{nome:"Letras – Português",desc:"Língua portuguesa, literatura e ensino: a base da nossa própria língua.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/letrasufape/",img:"assets/personagens/letras_port.jpg",
+        frase:"Você domina a língua que a gente usa todos os dias e ensina outros a usá-la melhor.",
         caracteristicas:["Licenciatura que forma professor de língua portuguesa e literaturas de língua portuguesa","A partir de 2027.1 é uma habilitação própria, separada do curso combinado anterior","Estágio supervisionado em escolas públicas e privadas"],
         mercado:"Docência em escolas, revisão e produção textual, elaboração de material didático, concursos públicos, editoras.",
         habilidades:["Gosto por leitura e escrita","Atenção à linguagem","Interesse em ensinar"],
-        mito:"Não é só gramática — envolve literatura, cultura e a forma como a linguagem constrói o mundo."}
+        mito:"Não é só gramática: envolve literatura, cultura e a forma como a linguagem constrói o mundo."}
     }},
   vila:{nome:"DISTRITO DO COMÉRCIO",cor:"#2e8b7d",emoji:"💠",imgMundo:"assets/mundos/vila.jpg",
-    desc:"Você é do tipo que organiza, negocia e conhece as regras do jogo. Seu jogo é manter o servidor girando — nos negócios e na lei.",
+    desc:"Você é do tipo que organiza, negocia e conhece as regras do jogo. Seu jogo é manter o servidor girando, nos negócios e na lei.",
     cursos:{
-      adm:{nome:"Administração",desc:"Gestão, estratégia e pessoas — liderar projetos e negócios.",link:"http://www.ufape.edu.br/administracao",img:"assets/personagens/adm.jpg",
+      adm:{nome:"Administração",desc:"Gestão, estratégia e pessoas: liderar projetos e negócios.",link:"http://www.ufape.edu.br/administracao",insta:"https://www.instagram.com/adm_ufape/",img:"assets/personagens/adm.jpg",
         frase:"Você organiza pessoas, processos e recursos pra fazer qualquer negócio funcionar melhor.",
-        caracteristicas:["Bacharelado generalista — gestão de pessoas, finanças, marketing, operações e estratégia","Muitos estudos de caso e projetos com empresas reais","Base sólida para empreender ou atuar em qualquer setor"],
+        caracteristicas:["Bacharelado generalista: gestão de pessoas, finanças, marketing, operações e estratégia","Muitos estudos de caso e projetos com empresas reais","Base sólida para empreender ou atuar em qualquer setor"],
         mercado:"Empresas privadas de todos os portes, setor público, ONGs, consultoria, empreendedorismo próprio.",
         habilidades:["Visão de conjunto (big picture)","Liderança e comunicação","Capacidade de decidir com dados incompletos"],
-        mito:"Não forma \"chefe\" automaticamente — forma quem sabe organizar times e recursos, liderando ou como parte do time."},
-      contabeis:{nome:"Ciências Contábeis",desc:"Números, finanças e decisões — a bússola econômica de qualquer time.",link:"https://ufape.edu.br/cienciascontabeis",img:"assets/personagens/contabeis.jpg",
-        frase:"Você é quem entende de verdade pra onde vai o dinheiro — e transforma isso em decisão.",
+        mito:"Não forma \"chefe\" automaticamente: forma quem sabe organizar times e recursos, liderando ou como parte do time."},
+      contabeis:{nome:"Ciências Contábeis",desc:"Números, finanças e decisões: a bússola econômica de qualquer time.",link:"https://ufape.edu.br/cienciascontabeis",insta:"https://www.instagram.com/contabeis.ufape/",img:"assets/personagens/contabeis.jpg",
+        frase:"Você é quem entende de verdade pra onde vai o dinheiro e transforma isso em decisão.",
         caracteristicas:["Bacharelado técnico, com forte base em legislação, finanças e contabilidade","Habilita para o exame e o registro na profissão contábil (CFC)","Alta empregabilidade por ser exigência legal em empresas"],
         mercado:"Escritórios de contabilidade, controladoria e auditoria em empresas, setor público, perícia contábil, consultoria tributária.",
         habilidades:["Atenção a detalhes e números","Organização e ética","Interesse em finanças e legislação"],
-        mito:"Não é só \"fazer imposto de renda\" — é a base de decisão financeira de qualquer negócio ou governo."},
-      direito:{nome:"Direito",desc:"Justiça e as regras do jogo em sociedade — com foco em Direito agrário e digital.",link:"https://ufape.edu.br/graduacao",img:"assets/personagens/direito.jpg",
-        frase:"Você aprende as regras do jogo da sociedade — com foco em Direito agrário e digital na UFAPE.",
+        mito:"Não é só \"fazer imposto de renda\": é a base de decisão financeira de qualquer negócio ou governo."},
+      direito:{nome:"Direito",desc:"Justiça e as regras do jogo em sociedade, com foco em Direito agrário e digital.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/direito.jpg",
+        frase:"Você aprende as regras do jogo da sociedade, com foco em Direito agrário e digital na UFAPE.",
         caracteristicas:["Curso novo na UFAPE, com PPC focado em Direito agrário e digital","Combina teoria jurídica com prática em núcleo de assistência jurídica","Habilita para o exame da OAB após a formação"],
         mercado:"Advocacia, concursos públicos (magistratura, MP, carreiras jurídicas), assessoria a produtores rurais e agronegócio, direito digital e proteção de dados.",
         habilidades:["Argumentação e leitura crítica","Interesse em justiça social","Organização para lidar com prazos e processos"],
-        mito:"Não é só decorar leis — é interpretar, argumentar e aplicar a lei a casos reais, inclusive no campo e no digital."}
+        mito:"Não é só decorar leis: é interpretar, argumentar e aplicar a lei a casos reais, inclusive no campo e no digital."}
     }}
 };
 
@@ -567,6 +571,7 @@ function openCourse(worldKey,courseKey){
   (c.habilidades||[]).forEach(t=>{ const li=document.createElement('li'); li.textContent=t; habEl.appendChild(li); });
   document.getElementById('cpMito').textContent = c.mito || '';
   const lk = document.getElementById('cpLink'); lk.href = c.link;
+  const ig = document.getElementById('cpInsta'); ig.href = c.insta || 'https://www.instagram.com/ufapeoficial/';
   document.getElementById('cpBackBtn').onclick = ()=>openWorld(worldKey);
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -581,7 +586,7 @@ function backToHome(){
 /* ---------- LÓGICA DO QUIZ ---------- */
 let scores, current, chosenWorld, history, onTiebreak;
 
-/* embaralha uma cópia do array (Fisher-Yates) — impede descobrir o mundo pela posição da resposta */
+/* embaralha uma cópia do array (Fisher-Yates): impede descobrir o mundo pela posição da resposta */
 function shuffle(arr){
   const a = arr.slice();
   for(let i=a.length-1;i>0;i--){
@@ -649,7 +654,7 @@ function renderTiebreak(){
   const total=QUESTIONS.length+1;
   document.getElementById('bar').style.width=((total-1)/total*100)+'%';
   const tb=TIEBREAK[chosenWorld];
-  document.getElementById('qcount').textContent='Última pergunta — quase lá!';
+  document.getElementById('qcount').textContent='Última pergunta, quase lá!';
   document.getElementById('qtext').textContent=tb.q;
   const box=document.getElementById('answers'); box.innerHTML='';
   shuffle(tb.a).forEach(opt=>{
@@ -740,7 +745,7 @@ function showResult(courseKey){
 
 function shareResult(){
   const r=window._lastResult;
-  const txt='No UFAPEcraft eu caí no '+r.world+' e meu curso é '+r.course+'! 🎮⛏ Descubra o seu mundo na UFAPE — SiSU 2027.';
+  const txt='No UFAPEcraft eu caí no '+r.world+' e meu curso é '+r.course+'! 🎮⛏ Descubra o seu mundo na UFAPE, SiSU 2027.';
   if(navigator.share){ navigator.share({title:'UFAPEcraft',text:txt}).catch(()=>{}); }
   else{ navigator.clipboard.writeText(txt).then(()=>alert('Resultado copiado! Cole nas suas redes 📢')).catch(()=>alert(txt)); }
 }
