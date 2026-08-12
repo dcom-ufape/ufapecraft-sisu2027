@@ -33,12 +33,22 @@
   html{scroll-behavior:smooth}
   body{
     font-family:'VT323',monospace;
-    background:var(--dark2);
+    background-color:var(--dark2);
+    background-image:
+      linear-gradient(180deg, rgba(22,25,21,.90) 0%, rgba(22,25,21,.94) 100%),
+      url('assets/bg-site.jpg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
     color:var(--branco);
     font-size:20px;
     line-height:1.35;
     image-rendering:pixelated;
     overflow-x:hidden;
+  }
+  @media (max-width:900px){
+    body{background-attachment:scroll}
   }
   .pixel{font-family:'Press Start 2P',monospace;line-height:1.5;}
   /* blocky borders */
@@ -98,10 +108,11 @@
   .sec-sub{text-align:center;font-size:22px;color:#cfc8b4;max-width:680px;margin:0 auto 40px}
 
   /* worlds grid */
-  .worlds{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+  .worlds{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
   .world-card{
     padding:22px;color:#fff;position:relative;transition:transform .1s,filter .1s;
-    cursor:pointer;text-align:left;border:none;font-family:inherit;width:100%;
+    cursor:pointer;text-align:left;border:none;font-family:inherit;
+    flex:1 1 280px;max-width:330px;
     display:flex;flex-direction:column;justify-content:flex-end;
     min-height:360px;background-size:cover;background-position:center;
     text-shadow:2px 2px 0 rgba(0,0,0,.55), 0 0 12px rgba(0,0,0,.4);
@@ -120,11 +131,11 @@
   .world-card li{font-size:19px;padding:4px 0;border-top:2px dotted rgba(255,255,255,.5);background:rgba(18,20,15,.28)}
   .world-card li:before{content:"\25AA";margin-right:8px;color:var(--gold)}
   .world-card .enter-hint{margin-top:14px;font-size:16px;letter-spacing:1px;color:var(--gold)}
-  .w-campo{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(15,40,22,.88) 100%), url('assets/mundos/campo.jpg')}
-  .w-forja{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(40,14,18,.88) 100%), url('assets/mundos/forja.jpg')}
-  .w-vila{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(12,38,34,.88) 100%), url('assets/mundos/vila.jpg')}
-  .w-saber{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(28,20,42,.88) 100%), url('assets/mundos/saber.jpg')}
-  .w-torre{background-image:linear-gradient(180deg, rgba(18,20,15,.15) 0%, rgba(18,20,15,.45) 55%, rgba(12,20,42,.88) 100%), url('assets/mundos/torre.jpg')}
+  .w-campo{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(15,40,22,.94) 100%), url('assets/mundos/campo.jpg')}
+  .w-forja{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(40,14,18,.94) 100%), url('assets/mundos/forja.jpg')}
+  .w-vila{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(12,38,34,.94) 100%), url('assets/mundos/vila.jpg')}
+  .w-saber{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(28,20,42,.94) 100%), url('assets/mundos/saber.jpg')}
+  .w-torre{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(12,20,42,.94) 100%), url('assets/mundos/torre.jpg')}
 
   /* ===== WORLD PAGE ===== */
   #world-page{display:none}
@@ -197,6 +208,7 @@
   .result-card{padding:36px 24px;color:#fff;max-width:620px;margin:0 auto}
   .avatar{max-width:220px;margin:0 auto 20px;position:relative}
   .avatar img{display:block;width:100%;height:auto;margin:0 auto;border:4px solid var(--dark);box-shadow:inset -4px -4px 0 rgba(0,0,0,.25), 0 6px 0 rgba(0,0,0,.35)}
+  .achievement{display:inline-block;background:rgba(0,0,0,.35);border:2px solid var(--gold);color:var(--gold);font-size:15px;letter-spacing:1px;padding:6px 14px;margin-bottom:14px}
   .result-card .rlabel{font-size:20px;letter-spacing:2px;opacity:.9}
   .result-card h3{font-family:'Press Start 2P',monospace;font-size:22px;margin:8px 0 16px;text-shadow:3px 3px 0 rgba(0,0,0,.4)}
   .result-card .rdesc{font-size:22px;margin-bottom:22px}
@@ -210,8 +222,39 @@
   .btn-ghost{background:transparent;color:#fff;font-family:'Press Start 2P',monospace;font-size:11px;padding:14px 18px;border:4px solid #fff}
   .other-worlds{font-size:19px;color:#cfc8b4;margin-top:26px}
 
+  .email-capture{background:rgba(0,0,0,.28);border:4px solid rgba(0,0,0,.4);padding:20px;margin-top:22px;text-align:center}
+  .email-capture .ec-label{font-family:'Press Start 2P',monospace;font-size:12px;color:var(--gold);line-height:1.6;margin-bottom:14px}
+  .email-capture form{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .email-capture input[type=text],.email-capture input[type=email]{
+    font-family:'VT323',monospace;font-size:20px;padding:12px 14px;border:3px solid var(--dark);
+    background:var(--areia);color:var(--dark);flex:1 1 220px;min-width:0;
+  }
+  .email-capture input[type=text]:focus,.email-capture input[type=email]:focus{outline:3px solid var(--gold)}
+  .email-capture button{flex:1 1 100%}
+  .email-capture .ec-success{font-size:20px;color:var(--verde-claro)}
+  .email-capture .ec-note{font-size:15px;color:#9a927e;margin-top:12px}
+
   /* pixel avatar built from blocks */
   .px{position:absolute;width:20px;height:20px}
+
+  /* ===== VISITE A UFAPE (tour virtual) ===== */
+  #visite{background:rgba(10,12,9,.55)}
+  .tour-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:40px}
+  .tour-card{background:var(--dark);border:4px solid var(--dark);overflow:hidden;box-shadow:inset -3px -3px 0 rgba(0,0,0,.2),0 5px 0 rgba(0,0,0,.35)}
+  .tour-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-bottom:4px solid var(--dark)}
+  .tour-card figcaption{font-size:17px;padding:10px 12px;color:var(--areia)}
+  .tour-card figcaption a{color:var(--gold);text-decoration:none}
+  .tour-card figcaption a:hover{text-decoration:underline}
+  .visit-info{max-width:1000px;margin:0 auto;color:#fff;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+  .visit-info .vi-img{width:100%;height:100%;min-height:260px;object-fit:cover;display:block;border-right:4px solid var(--dark)}
+  .visit-info .vi-content{padding:34px 30px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+  .visit-info .vi-label{font-family:'Press Start 2P',monospace;font-size:13px;color:var(--gold);letter-spacing:1px;margin-bottom:14px;line-height:1.6}
+  .visit-info .vi-address{font-size:23px;margin-bottom:20px}
+  .visit-info .vi-note{font-size:18px;color:#cfc8b4;margin-top:16px}
+  @media(max-width:680px){
+    .visit-info{grid-template-columns:1fr}
+    .visit-info .vi-img{aspect-ratio:16/9;border-right:none;border-bottom:4px solid var(--dark)}
+  }
 
   footer{background:var(--dark2);text-align:center;padding:34px 20px;font-size:18px;color:#9a927e;border-top:6px solid var(--verde)}
   footer .pixel{font-size:10px;color:var(--areia)}
@@ -325,6 +368,7 @@
 
     <div id="result">
       <div class="result-card block" id="resultCard">
+        <div class="achievement">🏆 CONQUISTA DESBLOQUEADA</div>
         <div class="avatar" id="avatar"></div>
         <div class="rlabel">SEU MUNDO É</div>
         <h3 id="rworld"></h3>
@@ -337,13 +381,48 @@
         <div class="result-actions">
           <a class="btn-sec" id="rlink" href="#" target="_blank" rel="noopener">🔗 SAIBA MAIS SOBRE O CURSO →</a>
           <button class="btn-sec" onclick="shareResult()">📢 COMPARTILHAR</button>
-          <button class="btn-ghost" onclick="restart()">↻ JOGAR DE NOVO</button>
+          <button class="btn-ghost" onclick="restart()">↻ RESPAWN</button>
         </div>
         <p class="other-worlds" id="others"></p>
+        <div class="email-capture" id="emailCapture">
+          <p class="ec-label">📬 QUER SABER QUANDO AS INSCRIÇÕES DO SISU ABREM?</p>
+          <form id="emailForm" onsubmit="return submitEmail(event)">
+            <input type="text" id="nameInput" placeholder="Nome completo" required>
+            <input type="email" id="emailInput" placeholder="seu@email.com" required>
+            <button type="submit" class="btn-sec">GUARDAR MEU LOOT →</button>
+          </form>
+          <p class="ec-success" id="emailSuccess" style="display:none">✅ Combinado! Vamos avisar você por aqui.</p>
+          <p class="ec-note">Só usamos seu email pra falar sobre o SiSU 2027 da UFAPE. Sem spam.</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- VISITE A UFAPE (tour virtual + endereço real) -->
+<section id="visite">
+  <h2 class="sec">Isso foi só o portal</h2>
+  <p class="sec-sub">Cada prédio que apareceu aqui em blocos existe de verdade no campus. Que tal atravessar o portal e conhecer a UFAPE pessoalmente?</p>
+  <div class="tour-grid">
+    <figure class="tour-card block"><img src="assets/tour/salas-aula-b.jpg" alt="Bloco de Salas de Aula B da UFAPE, versão Minecraft"><figcaption>Bloco de Salas de Aula B</figcaption></figure>
+    <figure class="tour-card block"><img src="assets/tour/salas-aula-entrada.jpg" alt="Entrada do Bloco de Salas de Aula da UFAPE, versão Minecraft"><figcaption>Entrada das Salas de Aula</figcaption></figure>
+    <figure class="tour-card block"><img src="assets/tour/laboratorios.jpg" alt="Prédio dos laboratórios da UFAPE, versão Minecraft"><figcaption>Laboratórios</figcaption></figure>
+    <figure class="tour-card block"><img src="assets/tour/administrativo.jpg" alt="LACTAL, Laboratório de Ciência e Tecnologia de Alimentos da UFAPE, versão Minecraft"><figcaption>LACTAL - Laboratório de Ciência e Tecnologia de Alimentos</figcaption></figure>
+    <figure class="tour-card block"><img src="assets/tour/restaurante-universitario.jpg" alt="Biblioteca Ariano Suassuna da UFAPE, versão Minecraft"><figcaption>Biblioteca Ariano Suassuna</figcaption></figure>
+    <figure class="tour-card block"><img src="assets/tour/casa-ufape.jpg" alt="Casa UFAPE, espaço da PREC, versão Minecraft"><figcaption>Casa UFAPE (PREC)</figcaption></figure>
+    <figure class="tour-card block"><img src="assets/tour/quadra.jpg" alt="Quadra poliesportiva da UFAPE, versão Minecraft"><figcaption>Quadra Poliesportiva</figcaption></figure>
+    <figure class="tour-card block"><img src="assets/tour/hospital-veterinario.jpg" alt="Hospital Veterinário da UFAPE, versão Minecraft"><figcaption>Hospital Veterinário - HVU/UFAPE</figcaption></figure>
+  </div>
+  <div class="visit-info block">
+    <img class="vi-img" src="assets/tour/campus-aereo.jpg" alt="Vista aérea do campus da UFAPE, versão Minecraft">
+    <div class="vi-content">
+      <p class="vi-label">📍 SEU PONTO DE SPAWN NO MUNDO REAL</p>
+      <p class="vi-address">Av. Bom Pastor, S/N, Boa Vista, Garanhuns/PE</p>
+      <a class="btn-sec" href="https://www.google.com/maps/search/?api=1&query=Av.+Bom+Pastor%2C+S%2FN%2C+Boa+Vista%2C+Garanhuns-PE" target="_blank" rel="noopener">🗺️ ABRIR O MAPA →</a>
+      <p class="vi-note">Vem visitar o campus, conhecer os cursos de perto e falar com quem já joga essa partida todo dia.</p>
+    </div>
+  </div>
+</section>
 
 <footer id="siteFooter">
   <p class="pixel">UFAPEcraft</p>
@@ -521,7 +600,7 @@ const TIEBREAK = {
 let currentWorldKey = null;
 
 function setMainVisible(show){
-  ['top','mundos','quiz-wrap'].forEach(id=>{
+  ['top','mundos','quiz-wrap','visite'].forEach(id=>{
     const el=document.getElementById(id);
     if(el) el.style.display = show ? '' : 'none';
   });
@@ -605,6 +684,9 @@ function startQuiz(){
   current=0; chosenWorld=null; history=[]; onTiebreak=false;
   clearQuizBg();
   document.getElementById('result').style.display='none';
+  document.getElementById('emailForm').style.display='flex';
+  document.getElementById('emailForm').reset();
+  document.getElementById('emailSuccess').style.display='none';
   document.getElementById('quiz').style.display='block';
   document.getElementById('quiz-wrap').scrollIntoView({behavior:'smooth'});
   renderQuestion();
@@ -753,6 +835,40 @@ function shareResult(){
 }
 
 function restart(){ startQuiz(); document.getElementById('top').scrollIntoView({behavior:'smooth'}); }
+
+/* ---------- CAPTURA DE EMAIL (tela de resultado) ---------- */
+/* Ligado ao Google Form "UFAPEcraft: guarde seu progresso", que grava na planilha
+   "UFAPEcraft - Emails Coletados (SiSU 2027)":
+   EMAIL_FORM_ENTRY_NAME = campo Nome completo
+   EMAIL_FORM_ENTRY_EMAIL = campo Email
+   EMAIL_FORM_ENTRY_CONTEXT = opcional, campo pra guardar o mundo/curso escolhido (ainda não existe no form) */
+const EMAIL_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdiugGxVplptfYasR0YzVGSU76klXThIScxBqUF3xV5J4chQw/formResponse';
+const EMAIL_FORM_ENTRY_NAME = 'entry.1513376587';
+const EMAIL_FORM_ENTRY_EMAIL = 'entry.1794695296';
+const EMAIL_FORM_ENTRY_CONTEXT = '';
+
+function submitEmail(e){
+  e.preventDefault();
+  const name = document.getElementById('nameInput').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  if(!name || !email) return false;
+
+  if(EMAIL_FORM_ACTION && EMAIL_FORM_ENTRY_EMAIL){
+    const fd = new FormData();
+    if(EMAIL_FORM_ENTRY_NAME) fd.append(EMAIL_FORM_ENTRY_NAME, name);
+    fd.append(EMAIL_FORM_ENTRY_EMAIL, email);
+    if(EMAIL_FORM_ENTRY_CONTEXT && window._lastResult){
+      fd.append(EMAIL_FORM_ENTRY_CONTEXT, window._lastResult.world+' / '+window._lastResult.course);
+    }
+    fetch(EMAIL_FORM_ACTION, {method:'POST', mode:'no-cors', body:fd}).catch(()=>{});
+  } else {
+    console.warn('EMAIL_FORM_ACTION ainda não configurado, nada foi enviado:', name, email);
+  }
+
+  document.getElementById('emailForm').style.display='none';
+  document.getElementById('emailSuccess').style.display='block';
+  return false;
+}
 </script>
 </body>
 </html>
