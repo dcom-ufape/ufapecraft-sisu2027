@@ -62,12 +62,16 @@
   header.hero{
     position:relative;
     min-height:100vh;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:40px 20px 90px;
+    display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+    text-align:left;padding:40px 20px 90px 4%;
     background:
-      linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.35) 45%, rgba(18,20,15,.75) 100%),
+      linear-gradient(90deg, rgba(18,20,15,.7) 0%, rgba(18,20,15,.45) 32%, rgba(18,20,15,.12) 48%, rgba(18,20,15,0) 100%),
+      linear-gradient(180deg, rgba(18,20,15,.4) 0%, rgba(18,20,15,.2) 45%, rgba(18,20,15,.6) 100%),
       url('assets/capa-campus.jpg') center 30%/cover no-repeat;
     overflow:hidden;
+  }
+  @media (max-width:800px){
+    header.hero{align-items:center;text-align:center;padding:40px 20px 90px}
   }
   /* floating pixel clouds */
   .cloud{position:absolute;background:#fff;opacity:.9;box-shadow:20px 0 #fff,40px 0 #fff,20px -18px #fff, -20px 0 #fff;width:18px;height:18px;border-radius:2px;animation:drift 40s linear infinite}
@@ -86,9 +90,9 @@
     margin-bottom:10px;
   }
   h1.title .green{color:var(--gold)}
-  .title-img{display:block;width:100%;max-width:min(620px,92vw);height:auto;margin:0 auto 4px;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.28))}
-  .subtitle{font-size:clamp(20px,3.5vw,30px);color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.4);max-width:640px;margin:0 auto 8px}
-  .kicker{font-size:clamp(16px,2.5vw,22px);color:#eafbe0;text-shadow:2px 2px 0 rgba(0,0,0,.4);margin-bottom:30px}
+  .title-img{display:block;width:100%;max-width:min(420px,78vw);height:auto;margin:0 0 4px;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.28))}
+  .subtitle{font-size:clamp(18px,3vw,26px);color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.4);max-width:400px;margin:0 0 8px}
+  .kicker{font-size:clamp(15px,2.2vw,19px);color:#eafbe0;text-shadow:2px 2px 0 rgba(0,0,0,.4);margin-bottom:30px;max-width:400px}
   .btn-primary{
     background:var(--gold);color:var(--dark);font-family:'Press Start 2P',monospace;
     font-size:14px;padding:18px 26px;border:4px solid var(--dark);
@@ -97,7 +101,7 @@
   }
   .btn-primary:hover{filter:brightness(1.08)}
   .btn-primary:active{transform:translateY(5px);box-shadow:inset -3px -3px 0 rgba(0,0,0,.3),0 1px 0 #a87c10}
-  .hero-hint{margin-top:18px;font-size:18px;color:#eafbe0;text-shadow:1px 1px 0 rgba(0,0,0,.4)}
+  .hero-hint{margin-top:18px;font-size:18px;color:#eafbe0;text-shadow:1px 1px 0 rgba(0,0,0,.4);max-width:400px}
 
   /* ground row of blocks at hero bottom */
   .ground{position:absolute;bottom:0;left:0;width:100%;height:32px;display:flex}
@@ -108,12 +112,14 @@
   h2.sec{font-family:'Press Start 2P',monospace;font-size:clamp(16px,3.5vw,26px);text-align:center;margin-bottom:14px;color:var(--gold);text-shadow:3px 3px 0 rgba(0,0,0,.4)}
   .sec-sub{text-align:center;font-size:22px;color:#cfc8b4;max-width:680px;margin:0 auto 40px}
 
-  /* worlds grid */
-  .worlds{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
+  /* worlds grid: 2 colunas fixas (2 em cima, 2 embaixo) */
+  .worlds{display:grid;grid-template-columns:repeat(2, minmax(280px,330px));justify-content:center;gap:22px}
+  @media (max-width:680px){
+    .worlds{grid-template-columns:minmax(280px,330px);justify-items:center}
+  }
   .world-card{
-    padding:22px;color:#fff;position:relative;transition:transform .1s,filter .1s;
+    width:100%;padding:22px;color:#fff;position:relative;transition:transform .1s,filter .1s;
     cursor:pointer;text-align:left;border:none;font-family:inherit;
-    flex:1 1 280px;max-width:330px;
     display:flex;flex-direction:column;justify-content:flex-end;
     min-height:360px;background-size:cover;background-position:center;
     text-shadow:2px 2px 0 rgba(0,0,0,.55), 0 0 12px rgba(0,0,0,.4);
@@ -135,7 +141,6 @@
   .w-campo{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(15,40,22,.94) 100%), url('assets/mundos/campo.jpg')}
   .w-forja{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(40,14,18,.94) 100%), url('assets/mundos/forja.jpg')}
   .w-vila{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(12,38,34,.94) 100%), url('assets/mundos/vila.jpg')}
-  .w-saber{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(28,20,42,.94) 100%), url('assets/mundos/saber.jpg')}
   .w-torre{background-image:linear-gradient(180deg, rgba(18,20,15,.55) 0%, rgba(18,20,15,.72) 45%, rgba(12,20,42,.94) 100%), url('assets/mundos/torre.jpg')}
 
   /* ===== WORLD PAGE ===== */
@@ -271,14 +276,14 @@
   <p class="subtitle">Cada curso é um mundo. Qual é o seu?</p>
   <p class="kicker">Responda, descubra o seu mundo e o curso que combina com você.</p>
   <button class="btn-primary" onclick="startQuiz()">▶ COMEÇAR A JOGAR</button>
-  <p class="hero-hint">⛏ 5 mundos. 13 cursos. 1 futuro pra construir.</p>
+  <p class="hero-hint">⛏ 4 mundos. 12 cursos. 1 futuro pra construir.</p>
   <div class="ground"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 </header>
 
 <!-- WORLDS -->
 <section id="mundos">
-  <h2 class="sec">Os 5 mundos da UFAPE</h2>
-  <p class="sec-sub">Agrupamos os 13 cursos de graduação em cinco mundos, um para cada área oficial da UFAPE. Cada um tem um jeito de jogar e um jeito de transformar o Agreste.</p>
+  <h2 class="sec">Os 4 mundos da UFAPE</h2>
+  <p class="sec-sub">Agrupamos os 12 cursos de graduação em quatro mundos, um para cada área oficial da UFAPE. Cada um tem um jeito de jogar e um jeito de transformar o Agreste.</p>
   <div class="worlds">
     <button class="world-card w-campo block" onclick="openWorld('campo')">
       <span class="wico">🌾</span>
@@ -294,18 +299,11 @@
       <ul><li>Ciência da Computação</li><li>Ciência de Dados</li></ul>
       <p class="enter-hint">▶ ENTRAR NO MUNDO</p>
     </button>
-    <button class="world-card w-saber block" onclick="openWorld('saber')">
-      <span class="wico">📖</span>
-      <h3>Reino do Saber</h3>
-      <p>Pra quem gosta de entender e formar gente.</p>
-      <ul><li>Pedagogia</li><li>Psicologia</li></ul>
-      <p class="enter-hint">▶ ENTRAR NO MUNDO</p>
-    </button>
     <button class="world-card w-torre block" onclick="openWorld('torre')">
       <span class="wico">📜</span>
       <h3>Torre do Encantamento</h3>
-      <p>Pra quem gosta de línguas, livros e palavras.</p>
-      <ul><li>Letras – Inglês</li><li>Letras – Português</li></ul>
+      <p>Pra quem gosta de ensinar, formar gente e trabalhar com línguas, livros e palavras.</p>
+      <ul><li>Pedagogia</li><li>Letras – Inglês</li><li>Letras – Português</li></ul>
       <p class="enter-hint">▶ ENTRAR NO MUNDO</p>
     </button>
     <button class="world-card w-vila block" onclick="openWorld('vila')">
@@ -479,8 +477,8 @@ const WORLDS = {
         habilidades:["Gosto por matemática e estatística","Curiosidade investigativa","Comunicação para traduzir números em histórias"],
         mito:"Não é só \"mexer com IA\": a base é entender dados com rigor antes de qualquer modelo."}
     }},
-  saber:{nome:"REINO DO SABER",cor:"#5a4a8a",emoji:"📖",imgMundo:"assets/mundos/saber.jpg",
-    desc:"Você é do tipo que entende as pessoas e ajuda a formar quem elas vão ser. Seu jogo é cuidar da mente e do aprendizado de cada um.",
+  torre:{nome:"TORRE DO ENCANTAMENTO",cor:"#2b4c8c",emoji:"📜",imgMundo:"assets/mundos/torre.jpg",
+    desc:"Você é do tipo que ama ensinar, formar pessoas e trabalhar com as palavras, os livros e as línguas. Seu jogo é encantar o mundo com o que aprende, escreve e ensina.",
     cursos:{
       pedagogia:{nome:"Licenciatura em Pedagogia",desc:"Educação e formação humana: construir quem vai construir o futuro.",link:"https://ufape.edu.br/CCLPE.CAMUS",insta:"https://www.instagram.com/pedagogiaufape/",img:"assets/personagens/pedagogia.jpg",avatar:"assets/personagens/avatares/pedagogia.jpg",
         frase:"Você forma quem vai formar o futuro, dentro e fora da sala de aula.",
@@ -488,16 +486,6 @@ const WORLDS = {
         mercado:"Redes públicas e privadas de ensino, gestão e coordenação escolar, educação corporativa, produção de material didático, ONGs educacionais.",
         habilidades:["Paciência e escuta","Criatividade para ensinar","Compromisso social"],
         mito:"Não é só \"dar aula\": envolve gestão, currículo, inclusão e pesquisa em educação."},
-      psicologia:{nome:"Psicologia",desc:"Mente, comportamento e bem-estar: foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/psicologia.jpg",avatar:"assets/personagens/avatares/psicologia.jpg",
-        frase:"Você entende a mente e o comportamento para ajudar pessoas a se sentirem e funcionarem melhor.",
-        caracteristicas:["Curso novo na UFAPE, com foco clínico e educacional","Combina teoria, pesquisa e prática supervisionada (estágios e clínica-escola)","Formação generalista, com aprofundamento nas áreas de interesse do estudante"],
-        mercado:"Clínicas e consultórios, escolas (psicologia escolar), hospitais, RH e empresas, políticas públicas de saúde mental, pesquisa.",
-        habilidades:["Escuta ativa e empatia","Ética e sigilo","Interesse em ciência do comportamento"],
-        mito:"Psicólogo não \"lê mentes\": trabalha com método científico para entender comportamento e emoções."}
-    }},
-  torre:{nome:"TORRE DO ENCANTAMENTO",cor:"#2b4c8c",emoji:"📜",imgMundo:"assets/mundos/torre.jpg",
-    desc:"Você é do tipo que ama as palavras, os livros e as línguas. Seu jogo é encantar o mundo com o que escreve e ensina.",
-    cursos:{
       letras_ing:{nome:"Letras – Inglês",desc:"Língua inglesa, literatura e ensino: comunicação sem fronteiras.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/letrasufape/",img:"assets/personagens/letras_ing.jpg",avatar:"assets/personagens/avatares/letras_ing.jpg",
         frase:"Você domina a língua que conecta o Agreste ao resto do mundo.",
         caracteristicas:["Licenciatura que forma professor de língua inglesa e suas literaturas","A partir de 2027.1 é uma habilitação própria, separada do curso combinado anterior","Estágio supervisionado em escolas públicas e privadas"],
@@ -540,38 +528,32 @@ const QUESTIONS = [
   {q:"Ao começar um mundo novo, sua primeira missão é...",
    a:[{t:"Plantar uma roça e domesticar uns bichos",em:"🐄",w:"campo"},
       {t:"Montar um circuito de redstone / uma fábrica automática",em:"⚙️",w:"forja"},
-      {t:"Ensinar as regras do jogo pra quem tá chegando",em:"🎓",w:"saber"},
-      {t:"Construir uma biblioteca e estudar os livros encantados",em:"📚",w:"torre"},
+      {t:"Ensinar as regras do jogo e guardar os livros encantados da biblioteca",em:"📚",w:"torre"},
       {t:"Abrir uma loja e trocar esmeraldas com os aldeões",em:"💰",w:"vila"}]},
   {q:"Que item você quer sempre no inventário?",
    a:[{t:"Enxada, balde de leite e sementes",em:"🌱",w:"campo"},
       {t:"Redstone, bloco de comando e uma bancada",em:"🔧",w:"forja"},
-      {t:"Livros de regras e um sino de escola",em:"🔔",w:"saber"},
-      {t:"Livro e pena encantados",em:"🪶",w:"torre"},
+      {t:"Livro e pena encantados, e um sino de escola",em:"🪶",w:"torre"},
       {t:"Esmeraldas e um baú bem organizado",em:"💠",w:"vila"}]},
   {q:"O problema que você MAIS gosta de resolver é...",
    a:[{t:"Por que a plantação não cresce ou o animal adoeceu",em:"🩺",w:"campo"},
       {t:"Por que o código / a máquina não está funcionando",em:"💻",w:"forja"},
-      {t:"Como ajudar alguém a entender melhor a si mesmo ou o mundo",em:"🧠",w:"saber"},
-      {t:"Como traduzir ou escrever algo pra fazer sentido pros outros",em:"✍️",w:"torre"},
+      {t:"Como ensinar, traduzir ou escrever algo pra fazer sentido pros outros",em:"✍️",w:"torre"},
       {t:"Como fazer os recursos renderem mais",em:"📊",w:"vila"}]},
   {q:"Sua build dos sonhos é...",
    a:[{t:"Uma fazenda gigante e sustentável",em:"🚜",w:"campo"},
       {t:"Uma máquina cheia de engenhocas automáticas",em:"🏭",w:"forja"},
-      {t:"Uma escola ou clínica onde todo mundo é acolhido",em:"🏫",w:"saber"},
-      {t:"Uma torre-biblioteca cheia de livros e mapas",em:"🗼",w:"torre"},
+      {t:"Uma torre-biblioteca-escola cheia de livros, mapas e gente aprendendo",em:"🗼",w:"torre"},
       {t:"Um mercado movimentado, um império de vendas",em:"🏪",w:"vila"}]},
   {q:"Na sua equipe, você é o player que...",
    a:[{t:"Cuida da comida e dos bichos de todos",em:"🐔",w:"campo"},
       {t:"Resolve toda a parte técnica",em:"🛠️",w:"forja"},
-      {t:"Cuida de como cada um do time está se sentindo",em:"💬",w:"saber"},
-      {t:"Escreve as placas, os letreiros e traduz pro time",em:"🗣️",w:"torre"},
+      {t:"Ensina, escreve as placas e traduz pro time",em:"🗣️",w:"torre"},
       {t:"Administra o baú comunitário e os recursos",em:"🗂️",w:"vila"}]},
   {q:"A conquista que te deixaria mais orgulhoso é...",
    a:[{t:"Alimentar a aldeia inteira",em:"🌾",w:"campo"},
       {t:"Inventar algo que ninguém tinha feito",em:"🚀",w:"forja"},
-      {t:"Ver alguém aprender ou se sentir melhor por sua causa",em:"🎓",w:"saber"},
-      {t:"Escrever um livro que todo mundo quer ler",em:"📖",w:"torre"},
+      {t:"Ver alguém aprender, ou escrever um livro que todo mundo quer ler",em:"📖",w:"torre"},
       {t:"Fechar o melhor negócio do servidor",em:"🤝",w:"vila"}]}
 ];
 
@@ -585,11 +567,9 @@ const TIEBREAK = {
   forja:{q:"Na forja, você prefere transformar...",
     a:[{t:"Lógica e software, do zero",c:"comp"},
        {t:"Montanhas de dados em decisões",c:"dados"}]},
-  saber:{q:"No reino do saber, você quer...",
-    a:[{t:"Formar e educar pessoas de todas as idades",c:"pedagogia"},
-       {t:"Entender a mente e ajudar no bem-estar das pessoas",c:"psicologia"}]},
   torre:{q:"Na torre do encantamento, seu feitiço favorito é...",
-    a:[{t:"Ensinar e traduzir em língua inglesa",c:"letras_ing"},
+    a:[{t:"Formar e educar pessoas de todas as idades",c:"pedagogia"},
+       {t:"Ensinar e traduzir em língua inglesa",c:"letras_ing"},
        {t:"Ensinar e aprofundar a língua portuguesa",c:"letras_port"}]},
   vila:{q:"No distrito, seu talento é mais para...",
     a:[{t:"Liderar pessoas e projetos",c:"adm"},
@@ -681,7 +661,7 @@ function startQuiz(){
   document.getElementById('world-page').style.display='none';
   document.getElementById('course-page').style.display='none';
   setMainVisible(true);
-  scores={campo:0,forja:0,vila:0,saber:0,torre:0};
+  scores={campo:0,forja:0,vila:0,torre:0};
   current=0; chosenWorld=null; history=[]; onTiebreak=false;
   clearQuizBg();
   document.getElementById('result').style.display='none';
