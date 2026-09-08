@@ -162,7 +162,7 @@
   .course-card .cc-body{padding:14px 16px}
   .course-card h4{font-family:'Press Start 2P',monospace;font-size:13px;line-height:1.6;margin-bottom:8px;color:var(--gold)}
   .course-card p{font-size:18px;opacity:.9}
-  /* curso bloqueado (aguardando aprovação do MEC): sem clique, personagem apagado, selo "em breve" */
+  /* curso bloqueado (construindo...): sem clique, personagem apagado, selo "em breve" */
   .course-card.locked{cursor:default;position:relative}
   .course-card.locked:hover{transform:none}
   .course-card.locked .cc-img{filter:grayscale(1) brightness(.55)}
@@ -288,14 +288,14 @@
   <p class="subtitle">Cada curso é um mundo. Qual é o seu?</p>
   <p class="kicker">Responda, descubra o seu mundo e o curso que combina com você.</p>
   <button class="btn-primary" onclick="startQuiz()">▶ COMEÇAR A JOGAR</button>
-  <p class="hero-hint">⛏ 5 mundos. 9 cursos confirmados. 1 futuro pra construir.</p>
+  <p class="hero-hint">⛏ 5 mundos. 9 cursos. 1 futuro pra construir.</p>
   <div class="ground"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 </header>
 
 <!-- WORLDS -->
 <section id="mundos">
   <h2 class="sec">Os 5 mundos da UFAPE</h2>
-  <p class="sec-sub">Agrupamos os 9 cursos confirmados de graduação (+ 3 em processo de aprovação pelo MEC) em cinco mundos, um para cada área oficial da UFAPE. Cada um tem um jeito de jogar e um jeito de transformar o Agreste.</p>
+  <p class="sec-sub">Agrupamos os nossos 9 cursos de graduação em cinco mundos, um para cada área oficial da UFAPE. Cada um tem um jeito de jogar e um jeito de transformar o Agreste.</p>
   <div class="worlds">
     <button class="world-card w-campo block" onclick="openWorld('campo')">
       <span class="wico">🌾</span>
@@ -489,7 +489,7 @@ const WORLDS = {
         mercado:"Desenvolvimento de software, startups, empresas de tecnologia, setor público (governo digital), pesquisa em IA, trabalho remoto, inclusive internacional.",
         habilidades:["Raciocínio lógico","Paciência para resolver problemas complexos","Autoaprendizado constante (a área muda rápido)"],
         mito:"Programar é só uma parte: a área também é sobre resolver problemas e pensar em sistemas."},
-      dados:{bloqueado:true,statusBloqueio:"Em breve — aguardando aprovação do MEC para 2027",nome:"Ciência de Dados",desc:"Transforma dados em decisões: estatística, algoritmos e inteligência artificial.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/dados.jpg",avatar:"assets/personagens/avatares/dados.jpg",
+      dados:{bloqueado:true,statusBloqueio:"Em breve",nome:"Ciência de Dados",desc:"Transforma dados em decisões: estatística, algoritmos e inteligência artificial.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/dados.jpg",avatar:"assets/personagens/avatares/dados.jpg",
         frase:"Você transforma um monte de números soltos em decisões que fazem sentido.",
         caracteristicas:["Curso novo na UFAPE: une estatística, programação e inteligência artificial","Foco em análise, modelagem e visualização de dados","Forte interseção com todas as outras áreas (saúde, agro, negócios)"],
         mercado:"Empresas de todos os setores que usam dados para decisão, consultoria, pesquisa, setor público, mercado de IA em expansão.",
@@ -505,7 +505,7 @@ const WORLDS = {
         mercado:"Redes públicas e privadas de ensino, gestão e coordenação escolar, educação corporativa, produção de material didático, ONGs educacionais.",
         habilidades:["Paciência e escuta","Criatividade para ensinar","Compromisso social"],
         mito:"Não é só \"dar aula\": envolve gestão, currículo, inclusão e pesquisa em educação."},
-      psicologia:{bloqueado:true,statusBloqueio:"Em breve — aguardando aprovação do MEC para 2027",nome:"Psicologia",desc:"Mente, comportamento e bem-estar: foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/psicologia.jpg",avatar:"assets/personagens/avatares/psicologia.jpg",
+      psicologia:{bloqueado:true,statusBloqueio:"Em breve",nome:"Psicologia",desc:"Mente, comportamento e bem-estar: foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/psicologia.jpg",avatar:"assets/personagens/avatares/psicologia.jpg",
         frase:"Você entende a mente e o comportamento para ajudar pessoas a se sentirem e funcionarem melhor.",
         caracteristicas:["Curso novo na UFAPE, com foco clínico e educacional","Combina teoria, pesquisa e prática supervisionada (estágios e clínica-escola)","Formação generalista, com aprofundamento nas áreas de interesse do estudante"],
         mercado:"Clínicas e consultórios, escolas (psicologia escolar), hospitais, RH e empresas, políticas públicas de saúde mental, pesquisa.",
@@ -537,7 +537,7 @@ const WORLDS = {
         mercado:"Escritórios de contabilidade, controladoria e auditoria em empresas, setor público, perícia contábil, consultoria tributária.",
         habilidades:["Atenção a detalhes e números","Organização e ética","Interesse em finanças e legislação"],
         mito:"Não é só \"fazer imposto de renda\": é a base de decisão financeira de qualquer negócio ou governo."},
-      direito:{bloqueado:true,statusBloqueio:"Em breve — aguardando aprovação do MEC para 2027",nome:"Direito",desc:"Justiça e as regras do jogo em sociedade, com foco em Direito agrário e digital.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/direito.jpg",avatar:"assets/personagens/avatares/direito.jpg",
+      direito:{bloqueado:true,statusBloqueio:"Em breve",nome:"Direito",desc:"Justiça e as regras do jogo em sociedade, com foco em Direito agrário e digital.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/direito.jpg",avatar:"assets/personagens/avatares/direito.jpg",
         frase:"Você aprende as regras do jogo da sociedade, com foco em Direito agrário e digital na UFAPE.",
         caracteristicas:["Curso novo na UFAPE, com PPC focado em Direito agrário e digital","Combina teoria jurídica com prática em núcleo de assistência jurídica","Habilita para o exame da OAB após a formação"],
         mercado:"Advocacia, concursos públicos (magistratura, MP, carreiras jurídicas), assessoria a produtores rurais e agronegócio, direito digital e proteção de dados.",
@@ -634,7 +634,7 @@ function openWorld(worldKey){
   grid.innerHTML='';
   Object.entries(w.cursos).forEach(([key,c])=>{
     if(c.bloqueado===true){
-      // curso ainda não desbloqueado (aguardando MEC): card sem clique, sem página de curso
+      // curso ainda não desbloqueado (construindo...): card sem clique, sem página de curso
       const d=document.createElement('div');
       d.className='course-card block locked';
       d.setAttribute('aria-disabled','true');
