@@ -288,14 +288,14 @@
   <p class="subtitle">Cada curso é um mundo. Qual é o seu?</p>
   <p class="kicker">Responda, descubra o seu mundo e o curso que combina com você.</p>
   <button class="btn-primary" onclick="startQuiz()">▶ COMEÇAR A JOGAR</button>
-  <p class="hero-hint">⛏ 5 mundos. 10 cursos. 1 futuro pra construir.</p>
+  <p class="hero-hint">⛏ 5 mundos. 9 cursos confirmados. 1 futuro pra construir.</p>
   <div class="ground"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
 </header>
 
 <!-- WORLDS -->
 <section id="mundos">
   <h2 class="sec">Os 5 mundos da UFAPE</h2>
-  <p class="sec-sub">Agrupamos os 10 cursos confirmados de graduação (+ 3 em processo de aprovação pelo MEC) em cinco mundos, um para cada área oficial da UFAPE. Cada um tem um jeito de jogar e um jeito de transformar o Agreste.</p>
+  <p class="sec-sub">Agrupamos os 9 cursos confirmados de graduação (+ 3 em processo de aprovação pelo MEC) em cinco mundos, um para cada área oficial da UFAPE. Cada um tem um jeito de jogar e um jeito de transformar o Agreste.</p>
   <div class="worlds">
     <button class="world-card w-campo block" onclick="openWorld('campo')">
       <span class="wico">🌾</span>
@@ -322,7 +322,7 @@
       <span class="wico">📜</span>
       <h3>Torre do Encantamento</h3>
       <p>Pra quem gosta de línguas, livros e palavras.</p>
-      <ul><li>Letras – Inglês</li><li>Letras – Português</li></ul>
+      <ul><li>Letras – Português e Inglês</li></ul>
       <p class="enter-hint">▶ ENTRAR NO MUNDO</p>
     </button>
     <button class="world-card w-vila block" onclick="openWorld('vila')">
@@ -489,7 +489,7 @@ const WORLDS = {
         mercado:"Desenvolvimento de software, startups, empresas de tecnologia, setor público (governo digital), pesquisa em IA, trabalho remoto, inclusive internacional.",
         habilidades:["Raciocínio lógico","Paciência para resolver problemas complexos","Autoaprendizado constante (a área muda rápido)"],
         mito:"Programar é só uma parte: a área também é sobre resolver problemas e pensar em sistemas."},
-      dados:{bloqueado:true,statusBloqueio:"Em breve",nome:"Ciência de Dados",desc:"Transforma dados em decisões: estatística, algoritmos e inteligência artificial.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/dados.jpg",avatar:"assets/personagens/avatares/dados.jpg",
+      dados:{bloqueado:true,statusBloqueio:"Em breve — aguardando aprovação do MEC para 2027",nome:"Ciência de Dados",desc:"Transforma dados em decisões: estatística, algoritmos e inteligência artificial.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/dados.jpg",avatar:"assets/personagens/avatares/dados.jpg",
         frase:"Você transforma um monte de números soltos em decisões que fazem sentido.",
         caracteristicas:["Curso novo na UFAPE: une estatística, programação e inteligência artificial","Foco em análise, modelagem e visualização de dados","Forte interseção com todas as outras áreas (saúde, agro, negócios)"],
         mercado:"Empresas de todos os setores que usam dados para decisão, consultoria, pesquisa, setor público, mercado de IA em expansão.",
@@ -505,7 +505,7 @@ const WORLDS = {
         mercado:"Redes públicas e privadas de ensino, gestão e coordenação escolar, educação corporativa, produção de material didático, ONGs educacionais.",
         habilidades:["Paciência e escuta","Criatividade para ensinar","Compromisso social"],
         mito:"Não é só \"dar aula\": envolve gestão, currículo, inclusão e pesquisa em educação."},
-      psicologia:{bloqueado:true,statusBloqueio:"Em breve",nome:"Psicologia",desc:"Mente, comportamento e bem-estar: foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/psicologia.jpg",avatar:"assets/personagens/avatares/psicologia.jpg",
+      psicologia:{bloqueado:true,statusBloqueio:"Em breve — aguardando aprovação do MEC para 2027",nome:"Psicologia",desc:"Mente, comportamento e bem-estar: foco clínico e educacional.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/psicologia.jpg",avatar:"assets/personagens/avatares/psicologia.jpg",
         frase:"Você entende a mente e o comportamento para ajudar pessoas a se sentirem e funcionarem melhor.",
         caracteristicas:["Curso novo na UFAPE, com foco clínico e educacional","Combina teoria, pesquisa e prática supervisionada (estágios e clínica-escola)","Formação generalista, com aprofundamento nas áreas de interesse do estudante"],
         mercado:"Clínicas e consultórios, escolas (psicologia escolar), hospitais, RH e empresas, políticas públicas de saúde mental, pesquisa.",
@@ -515,18 +515,12 @@ const WORLDS = {
   torre:{nome:"TORRE DO ENCANTAMENTO",cor:"#2b4c8c",emoji:"📜",imgMundo:"assets/mundos/torre.jpg",
     desc:"Você é do tipo que ama as palavras, os livros e as línguas. Seu jogo é encantar o mundo com o que escreve e ensina.",
     cursos:{
-      letras_ing:{nome:"Letras – Inglês",desc:"Língua inglesa, literatura e ensino: comunicação sem fronteiras.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/letrasufape/",img:"assets/personagens/letras_ing.jpg",avatar:"assets/personagens/avatares/letras_ing.jpg",
-        frase:"Você domina a língua que conecta o Agreste ao resto do mundo.",
-        caracteristicas:["Licenciatura que forma professor de língua inglesa e suas literaturas","A partir de 2027.1 é uma habilitação própria, separada do curso combinado anterior","Estágio supervisionado em escolas públicas e privadas"],
-        mercado:"Docência em escolas e cursos de idiomas, tradução, revisão, produção de conteúdo bilíngue, concursos públicos.",
-        habilidades:["Gosto por idiomas e comunicação","Disciplina de estudo constante","Interesse em ensinar"],
-        mito:"Não é só \"falar inglês bem\": é entender a língua, a literatura e como ensiná-la."},
-      letras_port:{nome:"Letras – Português",desc:"Língua portuguesa, literatura e ensino: a base da nossa própria língua.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/letrasufape/",img:"assets/personagens/letras_port.jpg",avatar:"assets/personagens/avatares/letras_port.jpg",
-        frase:"Você domina a língua que a gente usa todos os dias e ensina outros a usá-la melhor.",
-        caracteristicas:["Licenciatura que forma professor de língua portuguesa e literaturas de língua portuguesa","A partir de 2027.1 é uma habilitação própria, separada do curso combinado anterior","Estágio supervisionado em escolas públicas e privadas"],
-        mercado:"Docência em escolas, revisão e produção textual, elaboração de material didático, concursos públicos, editoras.",
-        habilidades:["Gosto por leitura e escrita","Atenção à linguagem","Interesse em ensinar"],
-        mito:"Não é só gramática: envolve literatura, cultura e a forma como a linguagem constrói o mundo."}
+      letras:{nome:"Letras – Português e Inglês",desc:"Língua portuguesa e inglesa, literatura e ensino: comunicação e docência em duas línguas.",link:"https://ufape.edu.br/CCLLE.CAMUS",insta:"https://www.instagram.com/letrasufape/",img:"assets/personagens/letras.jpg",avatar:"assets/personagens/avatares/letras.jpg",
+        frase:"Você domina o português e o inglês para ensinar e conectar o Agreste ao resto do mundo.",
+        caracteristicas:["Licenciatura única que forma professor de língua portuguesa e inglesa, com as respectivas literaturas","Dupla habilitação: forma pra atuar no ensino tanto de português quanto de inglês","Estágio supervisionado em escolas públicas e privadas"],
+        mercado:"Docência em escolas e cursos de idiomas, tradução, revisão e produção de conteúdo (inclusive bilíngue), elaboração de material didático, concursos públicos, editoras.",
+        habilidades:["Gosto por idiomas, leitura e escrita","Disciplina de estudo constante","Interesse em ensinar"],
+        mito:"Não é só \"falar inglês bem\" ou saber gramática: envolve literatura, cultura e como ensinar duas línguas ao mesmo tempo."}
     }},
   vila:{nome:"DISTRITO DO COMÉRCIO",cor:"#2e8b7d",emoji:"💠",imgMundo:"assets/mundos/vila.jpg",
     desc:"Você é do tipo que organiza, negocia e conhece as regras do jogo. Seu jogo é manter o servidor girando, nos negócios e na lei.",
@@ -543,7 +537,7 @@ const WORLDS = {
         mercado:"Escritórios de contabilidade, controladoria e auditoria em empresas, setor público, perícia contábil, consultoria tributária.",
         habilidades:["Atenção a detalhes e números","Organização e ética","Interesse em finanças e legislação"],
         mito:"Não é só \"fazer imposto de renda\": é a base de decisão financeira de qualquer negócio ou governo."},
-      direito:{bloqueado:true,statusBloqueio:"Em breve",nome:"Direito",desc:"Justiça e as regras do jogo em sociedade, com foco em Direito agrário e digital.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/direito.jpg",avatar:"assets/personagens/avatares/direito.jpg",
+      direito:{bloqueado:true,statusBloqueio:"Em breve — aguardando aprovação do MEC para 2027",nome:"Direito",desc:"Justiça e as regras do jogo em sociedade, com foco em Direito agrário e digital.",link:"https://ufape.edu.br/graduacao",insta:"https://www.instagram.com/ufapeoficial/",img:"assets/personagens/direito.jpg",avatar:"assets/personagens/avatares/direito.jpg",
         frase:"Você aprende as regras do jogo da sociedade, com foco em Direito agrário e digital na UFAPE.",
         caracteristicas:["Curso novo na UFAPE, com PPC focado em Direito agrário e digital","Combina teoria jurídica com prática em núcleo de assistência jurídica","Habilita para o exame da OAB após a formação"],
         mercado:"Advocacia, concursos públicos (magistratura, MP, carreiras jurídicas), assessoria a produtores rurais e agronegócio, direito digital e proteção de dados.",
@@ -606,8 +600,7 @@ const TIEBREAK = {
     a:[{t:"Formar e educar pessoas de todas as idades",c:"pedagogia"},
        {t:"Entender a mente e ajudar no bem-estar das pessoas",c:"psicologia"}]},
   torre:{q:"Na torre do encantamento, seu feitiço favorito é...",
-    a:[{t:"Ensinar e traduzir em língua inglesa",c:"letras_ing"},
-       {t:"Ensinar e aprofundar a língua portuguesa",c:"letras_port"}]},
+    a:[{t:"Ensinar e unir duas línguas, português e inglês",c:"letras"}]},
   vila:{q:"No distrito, seu talento é mais para...",
     a:[{t:"Liderar pessoas e projetos",c:"adm"},
        {t:"Cuidar de números e finanças",c:"contabeis"},
